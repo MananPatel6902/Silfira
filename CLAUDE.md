@@ -4,65 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Silfira Realtors is a full-stack real estate website with a Python FastAPI backend and React frontend. The application manages property listings, agents, inquiries, valuations, and testimonials.
+Silfira Realtors is a **frontend-only** real estate website built with React. The application displays property listings, agent information, testimonials, and includes contact forms powered by Netlify Forms.
+
+**Note**: The `backend` folder contains legacy backend code that is **NOT USED** in the current deployment. The site is deployed as a static site on Netlify.
 
 ## Architecture
-
-### Backend (Python/FastAPI)
-- **Framework**: FastAPI with async/await pattern
-- **Database**: MongoDB with Motor (async driver)
-- **Structure**:
-  - `server.py`: Main FastAPI app with CORS middleware and `/api` prefix routing
-  - `models.py`: Pydantic models for validation (Property, Agent, Inquiry, Valuation, Testimonial, Stats)
-  - `routes.py`: API endpoint implementations
-  - `database.py`: MongoDB collections and helper functions (generate_id, add_timestamps)
-  - `seed_db.py`: Database seeding script using data from `seed_data.py`
 
 ### Frontend (React)
 - **Framework**: React with React Router
 - **UI Library**: shadcn/ui components (extensive component library in `src/components/ui/`)
 - **Routing**: BrowserRouter with routes defined in `App.js`
 - **Pages**: Home, Properties, PropertyDetail, About, Agents, Contact, Valuation
-- **Mock Data**: Currently uses `src/mock.js` (to be replaced with API calls per `contracts.md`)
+- **Data Source**: Static data from `src/mock.js` (easily editable)
+- **Forms**: Netlify Forms for contact, inquiry, and valuation submissions
+- **Deployment**: Netlify (configuration in `netlify.toml`)
 
-### Database Models
-All models use UUID-based `_id` fields and include `created_at`/`updated_at` timestamps:
-- **Property**: title, type (enum), status (enum), price, location, bedrooms, bathrooms, area, images, features, agent reference
+### Data Management
+Property listings, agent information, and testimonials are managed through `src/mock.js`:
+- **Property**: title, type, status, price, location, bedrooms, bathrooms, area, images, features, agent reference
 - **Agent**: name, title, email, phone, bio, specialties, listings count
-- **Inquiry**: property_id (optional), contact info, message, type (property/general), status
-- **Valuation**: property details, contact info, status (pending/completed)
-- **Testimonial**: name, role, content, rating, approved flag
+- **Testimonial**: name, role, content, rating
+
+To update content, simply edit `frontend/src/mock.js` and redeploy.
 
 ## Development Commands
 
-### Backend
-```bash
-cd backend
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run development server
-uvicorn server:app --reload --host 0.0.0.0 --port 8000
-
-# Seed database (requires .env with MONGO_URL and DB_NAME)
-python seed_db.py
-
-# Code formatting and linting
-black .
-isort .
-flake8
-mypy .
-```
-
-### Frontend
 ```bash
 cd frontend
 
 # Install dependencies
 npm install
 
-# Run development server
+# Run development server (http://localhost:3000)
 npm start
 
 # Build for production
@@ -72,61 +45,63 @@ npm run build
 npm test
 ```
 
-## Environment Configuration
+## Deployment to Netlify
 
-### Backend `.env` (required)
+### Automated Deployment (Recommended)
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+2. Connect your repository to Netlify
+3. Netlify will automatically detect the `netlify.toml` configuration
+4. Build settings are configured automatically:
+   - **Base directory**: `frontend`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `frontend/build`
+
+### Manual Deployment
+
+```bash
+# Install Netlify CLI
+npm install -g netlify-cli
+
+# Build the project
+cd frontend
+npm run build
+
+# Deploy to Netlify
+netlify deploy --prod --dir=build
 ```
-MONGO_URL=mongodb://...
-DB_NAME=silfira_realtors
-CORS_ORIGINS=http://localhost:3000,http://localhost:5173
-```
 
-### Frontend `.env` (optional)
-Configure API base URL if needed.
+## Managing Content
 
-## API Endpoints
+### Updating Property Listings
 
-All endpoints are prefixed with `/api`:
+Edit `frontend/src/mock.js` to add, remove, or modify:
+- Property listings
+- Agent information
+- Testimonials
+- Statistics
 
-- `GET /api/properties` - List properties (supports filters: type, status, minPrice, maxPrice, location, featured)
-- `GET /api/properties/:id` - Get single property
-- `POST /api/properties` - Create property (admin)
-- `GET /api/agents` - List all agents
-- `GET /api/agents/:id` - Get single agent
-- `POST /api/inquiries` - Submit inquiry/contact form
-- `GET /api/inquiries` - List inquiries (admin)
-- `POST /api/valuations` - Submit valuation request
-- `GET /api/valuations` - List valuations (admin)
-- `GET /api/testimonials` - List approved testimonials
-- `GET /api/stats` - Get website statistics
+After making changes, commit and push to trigger automatic deployment (or manually deploy).
 
-See `contracts.md` for detailed API specifications and frontend integration plan.
+### Managing Form Submissions
 
-## Testing Protocol
+Form submissions from Contact, Valuation, and Property Inquiry forms are handled by Netlify Forms:
 
-This project uses a specialized testing workflow documented in `test_result.md`. The file contains:
-- A YAML-based testing data structure tracking backend/frontend tasks
-- Task status tracking (implemented, working, stuck_count, priority)
-- Agent communication protocol between main and testing agents
-- Test plan with current focus and stuck tasks
+1. **View submissions**: Go to your Netlify dashboard → Forms tab
+2. **Email notifications**: Configure in Netlify dashboard → Forms → Form notifications
+3. **Spam filtering**: Netlify automatically filters spam submissions
+4. **Export data**: Download submissions as CSV from the Netlify dashboard
 
-**Important**: When making changes, update `test_result.md` before requesting testing from a testing agent. Include status history and set `needs_retesting: true` for modified tasks.
-
-## Key Integration Points
-
-The frontend currently uses mock data from `src/mock.js`. The `contracts.md` file outlines the complete migration plan to replace mock data with API calls in:
-- Home.jsx (featured properties, stats, testimonials)
-- Properties.jsx (property list with filters)
-- PropertyDetail.jsx (property details, agent info, inquiry form)
-- Agents.jsx (agent list)
-- Contact.jsx (contact form submission)
-- Valuation.jsx (valuation form submission)
+Three forms are configured:
+- **contact**: General contact form
+- **valuation**: Property valuation requests
+- **property-inquiry**: Property-specific inquiries
 
 ## Technical Notes
 
-- Backend uses Motor for async MongoDB operations
-- All API routes are async/await
 - Frontend uses shadcn/ui component library with Tailwind CSS
-- IDs are UUID v4 strings, not MongoDB ObjectIds
-- Stats endpoint returns mostly static values (only total_properties is dynamic)
-- CORS is configured via environment variable
+- All routing handled client-side with React Router
+- Forms use Netlify Forms (no backend required)
+- Data is static and loaded from `src/mock.js`
+- Images hosted on external CDN (Unsplash)
+- SPA routing configured via `netlify.toml` redirects

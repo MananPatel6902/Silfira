@@ -12,7 +12,7 @@ const Header = () => {
   { name: 'Properties', path: '/properties' },
   { name: 'About', path: '/about' },
   { name: 'Agents', path: '/agents' },
-  { name: 'Contact', path: '/contact' }];
+  { name: 'Get Valuation', path: '/valuation' }];
 
 
   return (
@@ -56,10 +56,10 @@ const Header = () => {
               </Link>
             )}
             <Button
-              onClick={() => navigate('/valuation')}
+              onClick={() => navigate('/contact')}
               className="bg-gold-600 hover:bg-gold-700 text-white px-6 py-2 transition-colors">
 
-              Get Valuation
+              Contact
             </Button>
           </nav>
 
@@ -87,12 +87,12 @@ const Header = () => {
           )}
             <Button
             onClick={() => {
-              navigate('/valuation');
+              navigate('/contact');
               setMobileMenuOpen(false);
             }}
             className="w-full mt-4 bg-gold-600 hover:bg-gold-700 text-white transition-colors">
 
-              Get Valuation
+              Contact
             </Button>
           </nav>
         }

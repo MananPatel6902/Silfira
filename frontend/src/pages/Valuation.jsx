@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { Textarea } from '../components/ui/textarea';
 import { Home, DollarSign, TrendingUp, CheckCircle2 } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
@@ -24,11 +23,28 @@ const Valuation = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    toast({
-      title: "Valuation Request Submitted!",
-      description: "Our expert will contact you within 24 hours with a detailed report."
-    });
+
+    // Submit to Netlify
+    const formElement = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(formElement)).toString(),
+    })
+      .then(() => {
+        setSubmitted(true);
+        toast({
+          title: "Valuation Request Submitted!",
+          description: "Our expert will contact you within 24 hours with a detailed report."
+        });
+      })
+      .catch((error) => {
+        toast({
+          title: "Error",
+          description: "Failed to submit request. Please try again.",
+          variant: "destructive"
+        });
+      });
   };
 
   if (submitted) {
@@ -121,13 +137,15 @@ const Valuation = () => {
         <div className="max-w-3xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-serif text-navy-900 mb-6">Property Details</h2>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6" name="valuation" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="valuation" />
               {/* Personal Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
                   <Input
                     type="text"
+                    name="name"
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -139,6 +157,7 @@ const Valuation = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
                   <Input
                     type="email"
+                    name="email"
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -152,6 +171,7 @@ const Valuation = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
                 <Input
                   type="tel"
+                  name="phone"
                   placeholder="+1 (555) 123-4567"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -166,26 +186,29 @@ const Valuation = () => {
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Property Type *</label>
-                    <Select value={formData.propertyType} onValueChange={(value) => setFormData({ ...formData, propertyType: value })} required>
-                      <SelectTrigger className="h-12">
-                        <SelectValue placeholder="Select property type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="house">House</SelectItem>
-                        <SelectItem value="villa">Villa</SelectItem>
-                        <SelectItem value="penthouse">Penthouse</SelectItem>
-                        <SelectItem value="apartment">Apartment</SelectItem>
-                        <SelectItem value="condo">Condo</SelectItem>
-                        <SelectItem value="estate">Estate</SelectItem>
-                        <SelectItem value="commercial">Commercial</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <select
+                      name="propertyType"
+                      value={formData.propertyType}
+                      onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
+                      required
+                      className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      <option value="">Select property type</option>
+                      <option value="house">House</option>
+                      <option value="villa">Villa</option>
+                      <option value="penthouse">Penthouse</option>
+                      <option value="apartment">Apartment</option>
+                      <option value="condo">Condo</option>
+                      <option value="estate">Estate</option>
+                      <option value="commercial">Commercial</option>
+                    </select>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Property Address *</label>
                     <Input
                       type="text"
+                      name="address"
                       placeholder="123 Main Street, City, State, ZIP"
                       value={formData.address}
                       onChange={(e) => setFormData({ ...formData, address: e.target.value })}
@@ -199,6 +222,7 @@ const Valuation = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Bedrooms *</label>
                       <Input
                         type="number"
+                        name="bedrooms"
                         placeholder="3"
                         value={formData.bedrooms}
                         onChange={(e) => setFormData({ ...formData, bedrooms: e.target.value })}
@@ -211,6 +235,7 @@ const Valuation = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Bathrooms *</label>
                       <Input
                         type="number"
+                        name="bathrooms"
                         placeholder="2"
                         value={formData.bathrooms}
                         onChange={(e) => setFormData({ ...formData, bathrooms: e.target.value })}
@@ -223,6 +248,7 @@ const Valuation = () => {
                       <label className="block text-sm font-medium text-gray-700 mb-2">Area (sqft) *</label>
                       <Input
                         type="number"
+                        name="area"
                         placeholder="2000"
                         value={formData.area}
                         onChange={(e) => setFormData({ ...formData, area: e.target.value })}
@@ -237,6 +263,7 @@ const Valuation = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">Year Built</label>
                     <Input
                       type="number"
+                      name="yearBuilt"
                       placeholder="2020"
                       value={formData.yearBuilt}
                       onChange={(e) => setFormData({ ...formData, yearBuilt: e.target.value })}
@@ -249,6 +276,7 @@ const Valuation = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">Additional Information</label>
                     <Textarea
+                      name="additionalInfo"
                       placeholder="Tell us about any recent renovations, unique features, or other details..."
                       value={formData.additionalInfo}
                       onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}

@@ -37,11 +37,28 @@ const PropertyDetail = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast({
-      title: "Inquiry Sent!",
-      description: "Our agent will contact you shortly."
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
+
+    // Submit to Netlify
+    const formElement = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(formElement)).toString(),
+    })
+      .then(() => {
+        toast({
+          title: "Inquiry Sent!",
+          description: "Our agent will contact you shortly."
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      })
+      .catch((error) => {
+        toast({
+          title: "Error",
+          description: "Failed to send inquiry. Please try again.",
+          variant: "destructive"
+        });
+      });
   };
 
   const handleSaveFavorite = () => {
@@ -209,9 +226,12 @@ const PropertyDetail = () => {
             {/* Inquiry Form */}
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h3 className="text-xl font-serif text-navy-900 mb-4">Request Information</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4" name="property-inquiry" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="property-inquiry" />
+                <input type="hidden" name="property" value={property.title} />
                 <Input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -219,6 +239,7 @@ const PropertyDetail = () => {
                 />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Email Address"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -226,12 +247,14 @@ const PropertyDetail = () => {
                 />
                 <Input
                   type="tel"
+                  name="phone"
                   placeholder="Phone Number"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
                 />
                 <Textarea
+                  name="message"
                   placeholder="Your Message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}

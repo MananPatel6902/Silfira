@@ -6,7 +6,8 @@
       "Bash(findstr:*)",
       "Bash(taskkill:*)",
       "Bash(cmd.exe //c taskkill //PID 14264 //F)",
-      "Bash(cmd.exe //c taskkill //PID 14540 //F)"
+      "Bash(cmd.exe //c taskkill //PID 14540 //F)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

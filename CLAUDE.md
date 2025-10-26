@@ -4,9 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Silfira Realtors is a **frontend-only** real estate website built with React. The application displays property listings, agent information, testimonials, and includes contact forms powered by Netlify Forms.
-
-**Note**: The `backend` folder contains legacy backend code that is **NOT USED** in the current deployment. The site is deployed as a static site on Netlify.
+Silfira Realtors is a **frontend-only** real estate website built with React. The application displays property listings, agent information, testimonials, and includes contact forms powered by Netlify Forms. The site is deployed as a static site on Netlify.
 
 ## Architecture
 

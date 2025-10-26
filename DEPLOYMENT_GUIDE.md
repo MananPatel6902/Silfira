@@ -143,4 +143,4 @@ This ensures React Router works correctly.
 
 ---
 
-**Note**: The `backend` folder in this repository is legacy code and is NOT used in the current deployment. The site runs entirely on the frontend with Netlify Forms handling all form submissions.
+**Silfira Realtors** - A clean, frontend-only static site with Netlify Forms handling all form submissions.

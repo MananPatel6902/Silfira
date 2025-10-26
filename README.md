@@ -139,10 +139,10 @@ silfira-realtors/
 │   │   ├── App.js
 │   │   └── index.js
 │   └── package.json
-├── backend/                   # Legacy (NOT USED)
 ├── netlify.toml              # Netlify configuration
 ├── DEPLOYMENT_GUIDE.md       # Deployment instructions
 ├── CLAUDE.md                 # Developer documentation
+├── .gitignore                # Git ignore rules
 └── README.md                 # This file
 ```
 
@@ -181,4 +181,4 @@ For issues or questions, please contact [rohan@silfirarealtors.com](mailto:rohan
 
 ---
 
-**Note**: The `backend` folder contains legacy code and is not used in the current deployment. This is a frontend-only static site.
+**Silfira Realtors** - A modern, frontend-only static site deployed on Netlify.

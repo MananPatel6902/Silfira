@@ -3,11 +3,12 @@ import { Button } from '../components/ui/button';
 import { Mail, Phone } from 'lucide-react';
 import { agents } from '../mock';
 
+
 const Agents = () => {
   return (
     <div className="min-h-screen bg-white pt-32 pb-20">
       {/* Header */}
-      <section className="py-12 bg-cream-50">
+      <section className="py-12 bg-cream-50" >
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-serif text-navy-900 mb-4">Meet Your Agent</h1>
           <p className="text-xl text-gray-600">
@@ -24,6 +25,7 @@ const Agents = () => {
               <div
                 key={agent.id}
                 id={agent.id}
+                
                 className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all group"
               >
                 <div className="relative h-80 overflow-hidden">

@@ -26,7 +26,7 @@ const Header = () => {
               <span>+91 9712345802
               </span>
             </a>
-            <a href="mailto:rohan@silfirarealtors.com" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+            <a href="mailto:rohanrealtor20@gmail.com" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
               <Mail className="w-3 h-3" />
               <span>rohanrealtor20@gmail.com</span>
             </a>

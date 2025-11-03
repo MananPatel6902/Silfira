@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '../components/ui/button';
 import { Mail, Phone } from 'lucide-react';
 import { agents } from '../mock';
-
+  
 
 const Agents = () => {
   return (

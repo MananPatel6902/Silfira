@@ -127,9 +127,9 @@ export const agents = [
   {
     id: 'agent1',
     name: 'Rohan Darji',
-    title: 'Founder & Principal Broker',
+    title: 'Founder',
     image: './images/RohanDarji.jpg',
-    email: 'rohan@silfirarealtors.com',
+    email: 'rohanrealtor20@gmail.com',
     phone: '+91 9712345802',
     bio: 'Rohan Darji is the visionary founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
     specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
@@ -165,8 +165,8 @@ export const testimonials = [
 ];
 
 export const stats = [
-  { label: 'Properties Sold', value: '2,500+' },
-  { label: 'Happy Clients', value: '1,800+' },
-  { label: 'Years Experience', value: '25+' },
-  { label: 'Market Coverage', value: '15 Cities' }
+  { label: 'Properties Sold', value: '25+' },
+  { label: 'Happy Clients', value: '20+' },
+  { label: 'Years Experience', value: '2+' },
+  { label: 'Market Coverage', value: '2 Cities' }
 ];

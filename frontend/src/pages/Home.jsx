@@ -15,7 +15,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-navy-900/95 to-navy-800/90 z-10"></div>
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80" // change this
+            src="./images/home.jpg" // change this
             alt="Luxury Property"
             className="w-full h-full object-cover"
           />

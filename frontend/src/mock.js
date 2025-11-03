@@ -121,12 +121,14 @@ export const properties = [
   }
 ];
 
+
+
 export const agents = [
   {
     id: 'agent1',
     name: 'Rohan Darji',
     title: 'Founder & Principal Broker',
-    image: 'https://customer-assets.emergentagent.com/job_silfira-estates/artifacts/1vza88ep_IMG_6809.HEIC',
+    image: './images/RohanDarji.jpg',
     email: 'rohan@silfirarealtors.com',
     phone: '+91 9712345802',
     bio: 'Rohan Darji is the visionary founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
@@ -138,7 +140,7 @@ export const agents = [
 export const testimonials = [
   {
     id: '1',
-    name: 'David Miller',
+    name: 'Mithil Patel',
     role: 'Property Investor',
     content: 'Silfira Realtors made our investment property search seamless. Their market knowledge and professionalism are unmatched.',
     rating: 5,
@@ -146,7 +148,7 @@ export const testimonials = [
   },
   {
     id: '2',
-    name: 'Jennifer Thompson',
+    name: 'Utsav Panchal',
     role: 'Homeowner',
     content: 'Finding our dream home was effortless with Silfira. The team understood exactly what we needed and delivered beyond expectations.',
     rating: 5,
@@ -154,7 +156,7 @@ export const testimonials = [
   },
   {
     id: '3',
-    name: 'Robert Chang',
+    name: 'Prakash Patel',
     role: 'Business Executive',
     content: 'Exceptional service from start to finish. They sold our property above asking price in record time. Highly recommend!',
     rating: 5,

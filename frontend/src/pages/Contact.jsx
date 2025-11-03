@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { useToast } from '../hooks/use-toast';
 
@@ -18,11 +17,28 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours."
-    });
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+
+    // Submit to Netlify
+    const formElement = e.target;
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(formElement)).toString(),
+    })
+      .then(() => {
+        toast({
+          title: "Message Sent!",
+          description: "We'll get back to you within 24 hours."
+        });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+      })
+      .catch((error) => {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive"
+        });
+      });
   };
 
   return (
@@ -44,11 +60,13 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-serif text-navy-900 mb-6">Send us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
+                <input type="hidden" name="form-name" value="contact" />
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                   <Input
                     type="text"
+                    name="name"
                     placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -60,6 +78,7 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
                   <Input
                     type="email"
+                    name="email"
                     placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -71,6 +90,7 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                   <Input
                     type="tel"
+                    name="phone"
                     placeholder="+1 (555) 123-4567"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -80,22 +100,25 @@ const Contact = () => {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                  <Select value={formData.subject} onValueChange={(value) => setFormData({ ...formData, subject: value })} required>
-                    <SelectTrigger className="h-12">
-                      <SelectValue placeholder="Select a subject" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="buying">Buying Property</SelectItem>
-                      <SelectItem value="selling">Selling Property</SelectItem>
-                      <SelectItem value="renting">Renting Property</SelectItem>
-                      <SelectItem value="valuation">Property Valuation</SelectItem>
-                      <SelectItem value="consultation">General Consultation</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    required
+                    className="flex h-12 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="buying">Buying Property</option>
+                    <option value="selling">Selling Property</option>
+                    <option value="renting">Renting Property</option>
+                    <option value="valuation">Property Valuation</option>
+                    <option value="consultation">General Consultation</option>
+                  </select>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <Textarea
+                    name="message"
                     placeholder="Tell us about your requirements..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}

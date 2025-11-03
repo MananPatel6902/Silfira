@@ -137,22 +137,22 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <img
-              src="https://images.unsplash.com/photo-1560184897-ae75f418493e?w=400&q=80"
+              src="./images/why1.jpg"
               alt="Office 1"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />
             <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80"
+              src="./images/why2.jpg"
               alt="Office 2"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />
             <img
-              src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&q=80"
+              src="./images/why3.jpg"
               alt="Office 3"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&q=80"
+              src="./images/why4.jpg"
               alt="Office 4"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />

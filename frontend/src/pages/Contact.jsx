@@ -147,9 +147,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Visit Our Office</h3>
                       <p className="text-cream-100 text-sm">
-                        123 Luxury Avenue<br />
-                        Miami, FL 33139<br />
-                        United States
+                        Kudasan, Gandhinagar<br />
+                        Gujarat, IN 382421<br />
                       </p>
                     </div>
                   </div>
@@ -161,7 +160,7 @@ const Contact = () => {
                       <h3 className="font-semibold mb-1">Call Us</h3>
                       <p className="text-cream-100 text-sm">
                         +91 9712345802<br />
-                        Rohan Darji - Founder & Principal Broker
+                        Rohan Darji - Founder
                       </p>
                     </div>
                   </div>
@@ -172,7 +171,7 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Email Us</h3>
                       <p className="text-cream-100 text-sm">
-                        rohan@silfirarealtors.com<br />
+                        rohanrealtor20@gmail.com<br />
                         Silfira Realtors
                       </p>
                     </div>

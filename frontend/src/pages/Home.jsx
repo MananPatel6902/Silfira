@@ -64,7 +64,7 @@ const Home = () => {
       {/* Featured Properties */}
       <section className="py-20 bg-cream-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16"> 
             <h2 className="text-4xl md:text-5xl font-serif text-navy-900 mb-4">Featured Properties</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">Explore our handpicked selection of exceptional properties</p>
           </div>

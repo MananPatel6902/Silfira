@@ -172,7 +172,7 @@ const Valuation = () => {
                 <Input
                   type="tel"
                   name="phone"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="+91 123-4567-987"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required

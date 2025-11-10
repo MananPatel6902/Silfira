@@ -96,6 +96,13 @@ const Footer = () => {
             <Link to="/terms" className="text-cream-200 hover:text-gold-400 transition-colors text-sm">Terms of Service</Link>
           </div>
         </div>
+
+        {/* Developer Credit */}
+        <div className="border-t border-cream-100/10 mt-6 pt-6 text-center">
+          <p className="text-cream-200/70 text-xs">
+            Developed by <a href="https://workaidly.com" target="_blank" rel="noopener noreferrer" className="text-gold-400 hover:text-gold-300 transition-colors">Workaidly Solutions Pvt. Ltd.</a>
+          </p>
+        </div>
       </div>
     </footer>
   );

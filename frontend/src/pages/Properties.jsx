@@ -10,7 +10,7 @@ const Properties = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [propertyType, setPropertyType] = useState('all');
   const [propertyStatus, setPropertyStatus] = useState('all');
-  const [priceRange, setPriceRange] = useState([0, 5000000]);
+  const [priceRange, setPriceRange] = useState([0, 20000000]);
   const [showFilters, setShowFilters] = useState(false);
 
   const filteredProperties = useMemo(() => {
@@ -98,7 +98,7 @@ const Properties = () => {
                     value={priceRange}
                     onValueChange={setPriceRange}
                     min={0}
-                    max={5000000}
+                    max={20000000}
                     step={100000}
                     className="mt-4"
                   />
@@ -148,7 +148,13 @@ const Properties = () => {
                 <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
                   <div className="flex items-center gap-1">
                     <Bed className="w-4 h-4" />
-                    <span>{property.bedrooms}</span>
+                    <span>
+                      {property.bedroomsMin && property.bedroomsMax ? (
+                        <>{property.bedroomsMin}-{property.bedroomsMax} BHK</>
+                      ) : (
+                        <>{property.bedrooms} BHK</>
+                      )}
+                    </span>
                   </div>
                   <div className="flex items-center gap-1">
                     <Bath className="w-4 h-4" />
@@ -156,7 +162,13 @@ const Properties = () => {
                   </div>
                   <div className="flex items-center gap-1">
                     <Square className="w-4 h-4" />
-                    <span>{property.area.toLocaleString()} sqft</span>
+                    <span>
+                      {property.areaMin && property.areaMax ? (
+                        <>{property.areaMin.toLocaleString()}-{property.areaMax.toLocaleString()} sqft</>
+                      ) : (
+                        <>{property.area.toLocaleString()} sqft</>
+                      )}
+                    </span>
                   </div>
                 </div>
                 <div className="mb-4">
@@ -172,7 +184,15 @@ const Properties = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <div className="text-2xl font-serif text-navy-900">
-                    ₹{property.price.toLocaleString('en-IN')}
+                    {property.priceMin && property.priceMax ? (
+                      <>
+                        ₹{property.priceMin.toLocaleString('en-IN')} - ₹{property.priceMax.toLocaleString('en-IN')}
+                      </>
+                    ) : (
+                      <>
+                        ₹{property.price.toLocaleString('en-IN')}
+                      </>
+                    )}
                     {property.status === 'for-rent' && <span className="text-base">/mo</span>}
                   </div>
                 </div>
@@ -189,7 +209,7 @@ const Properties = () => {
                 setSearchTerm('');
                 setPropertyType('all');
                 setPropertyStatus('all');
-                setPriceRange([0, 5000000]);
+                setPriceRange([0, 20000000]);
               }}
               className="mt-6 bg-gold-600 hover:bg-gold-700 text-white"
             >

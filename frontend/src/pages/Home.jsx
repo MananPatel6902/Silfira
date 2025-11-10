@@ -130,7 +130,15 @@ const Home = () => {
                   <p className="text-gray-600 text-sm mb-4">{property.location}</p>
                   <div className="flex justify-between items-center mb-4">
                     <div className="text-sm text-gray-600">
-                      {property.bedrooms} bed • {property.bathrooms} bath • {property.area.toLocaleString()} sqft
+                      {property.bedroomsMin && property.bedroomsMax ? (
+                        <>{property.bedroomsMin}-{property.bedroomsMax} BHK</>
+                      ) : (
+                        <>{property.bedrooms} BHK</>
+                      )} • {property.bathrooms} bath • {property.areaMin && property.areaMax ? (
+                        <>{property.areaMin.toLocaleString()}-{property.areaMax.toLocaleString()} sqft</>
+                      ) : (
+                        <>{property.area.toLocaleString()} sqft</>
+                      )}
                     </div>
                   </div>
                   <div className="mb-4">
@@ -146,7 +154,15 @@ const Home = () => {
                   </div>
                   <div className="flex justify-between items-center">
                     <div className="text-2xl font-serif text-navy-900">
-                      ₹{property.price.toLocaleString('en-IN')}
+                      {property.priceMin && property.priceMax ? (
+                        <>
+                          ₹{property.priceMin.toLocaleString('en-IN')} - ₹{property.priceMax.toLocaleString('en-IN')}
+                        </>
+                      ) : (
+                        <>
+                          ₹{property.price.toLocaleString('en-IN')}
+                        </>
+                      )}
                       {property.status === 'for-rent' && <span className="text-base">/mo</span>}
                     </div>
                   </div>

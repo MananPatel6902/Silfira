@@ -178,14 +178,14 @@ const Home = () => {
                 <HomeIcon className="w-8 h-8 text-gold-600" />
               </div>
               <h3 className="text-xl font-serif text-navy-900 mb-3">Premium Properties</h3>
-              <p className="text-gray-600">Exclusive access to the finest luxury properties in prime locations worldwide</p>
+              <p className="text-gray-600">Exclusive access to the finest luxury properties in prime locations all over Gandhinagar and Gift City </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Award className="w-8 h-8 text-gold-600" />
               </div>
               <h3 className="text-xl font-serif text-navy-900 mb-3">Expert Guidance</h3>
-              <p className="text-gray-600">Professional agents with decades of combined experience in luxury real estate</p>
+              <p className="text-gray-600">Professional agents with years of combined experience in luxury real estate</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">

@@ -189,12 +189,12 @@ export const stats = [
 ];
 
 export const trustedPartners = [
-  { name: 'Dev Group', logo: './images/partners_svg/dev.svg' },
-  { name: 'Omkar Group', logo: './images/partners/Omkar.svg' },
-  { name: 'Pramukh Group', logo: './images/partners/pramukh.svg' },
-  { name: 'Psy Pramukh Group', logo: './images/partners/psypramukh.svg' },
-  { name: 'Shikshapatri Group', logo: './images/partners/Shikshapatri.svg' },
-  { name: 'Swagat Group', logo: './images/partners/Swagat.svg' },
-  { name: 'Vinayak Group', logo: './images/partners/vinayak.svg' },
-  { name: 'Saral Group', logo: './images/partners/saral.svg' }
+  { name: 'Dev Group', logo: './images/partners_svg/dev.png' },
+  { name: 'Omkar Group', logo: './images/partners_svg/Omkar.png' },
+  { name: 'Pramukh Group', logo: './images/partners_svg/pramukh.png' },
+  { name: 'Psy Pramukh Group', logo: './images/partners_svg/psy pramukh.png' },
+  { name: 'Shikshapatri Group', logo: './images/partners_svg/Shikshapatri.png' },
+  { name: 'Swagat Group', logo: './images/partners_svg/Swagat.png' },
+  { name: 'Vinayak Group', logo: './images/partners_svg/vinayak.png' },
+  { name: 'Saral Group', logo: './images/partners_svg/saral.png' }
 ];

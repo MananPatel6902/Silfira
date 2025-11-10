@@ -28,9 +28,15 @@ const Footer = () => {
                 </svg>
               </a>
               
-              <span className="w-10 h-10 rounded-full bg-cream-100/10 flex items-center justify-center hover:bg-gold-600 transition-colors cursor-pointer">
+              <a
+                href="https://www.instagram.com/silfira_realtors"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full bg-cream-100/10 flex items-center justify-center hover:bg-gold-600 transition-colors"
+                title="Follow us on Instagram"
+              >
                 <Instagram className="w-4 h-4" />
-              </span>
+              </a>
                 
               
             </div>

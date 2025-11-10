@@ -83,7 +83,7 @@ const Home = () => {
                     <img
                       src={partner.logo}
                       alt={partner.name}
-                      className="max-w-full max-h-full object-contain opacity-60 hover:opacity-100 transition-opacity duration-300 grayscale hover:grayscale-0"
+                      className="max-w-full max-h-full object-contain opacity-100 hover:opacity-200 transition-opacity duration-300  hover:grayscale"
                       onError={(e) => {
                         e.target.style.display = 'none';
                         e.target.nextSibling.style.display = 'flex';

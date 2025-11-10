@@ -71,19 +71,6 @@ const Agents = () => {
                       ))}
                     </div>
                   </div>
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">
-                      <span className="font-semibold text-navy-900">{agent.listings}</span> Active Listings
-                    </span>
-                    <Button
-                      variant="outline"
-                      className="border-gold-600 text-gold-600 hover:bg-gold-50 text-sm"
-                      onClick={() => window.location.href = `mailto:${agent.email}`}
-                    >
-                      Contact
-                    </Button>
-                  </div>
                 </div>
               </div>
             ))}

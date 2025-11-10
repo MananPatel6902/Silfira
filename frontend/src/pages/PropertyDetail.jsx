@@ -131,7 +131,7 @@ const PropertyDetail = () => {
               </div>
 
               <div className="text-4xl font-serif text-navy-900 mb-8">
-                ${property.price.toLocaleString()}
+                ₹{property.price.toLocaleString('en-IN')}
                 {property.status === 'for-rent' && <span className="text-xl">/month</span>}
               </div>
 

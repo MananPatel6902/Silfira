@@ -20,7 +20,8 @@ export const properties = [
     description: 'Stunning waterfront villa with panoramic ocean views, private dock, and resort-style amenities.',
     features: ['Ocean View', 'Private Dock', 'Pool', 'Smart Home', 'Wine Cellar'],
     agent: 'agent1',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/ON1 (3BHK).pdf'
   },
   {
     id: '2',
@@ -40,7 +41,8 @@ export const properties = [
     description: 'Luxurious penthouse in the heart of Manhattan with floor-to-ceiling windows and city skyline views.',
     features: ['City Views', 'Concierge', 'Gym', 'Rooftop Terrace', 'Parking'],
     agent: 'agent2',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/property-2.pdf'
   },
   {
     id: '3',
@@ -60,7 +62,8 @@ export const properties = [
     description: 'Magnificent European-style estate with manicured gardens, tennis court, and guest house.',
     features: ['Tennis Court', 'Guest House', 'Library', 'Home Theater', 'Security System'],
     agent: 'agent1',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/property-3.pdf'
   },
   {
     id: '4',
@@ -79,7 +82,8 @@ export const properties = [
     description: 'Stunning industrial loft with exposed brick, high ceilings, and modern finishes.',
     features: ['Exposed Brick', 'High Ceilings', 'Hardwood Floors', 'Pet Friendly'],
     agent: 'agent3',
-    featured: false
+    featured: false,
+    brochureUrl: '/brochures/property-4.pdf'
   },
   {
     id: '5',
@@ -98,7 +102,8 @@ export const properties = [
     description: 'Charming family home with private beach access and mountain views.',
     features: ['Lake Access', 'Mountain Views', 'Fireplace', 'Deck', 'Garage'],
     agent: 'agent2',
-    featured: false
+    featured: false,
+    brochureUrl: '/brochures/property-5.pdf'
   },
   {
     id: '6',
@@ -117,7 +122,8 @@ export const properties = [
     description: 'Exquisite villa overlooking championship golf course with infinity pool and spa.',
     features: ['Golf Course View', 'Infinity Pool', 'Spa', 'Outdoor Kitchen', 'Smart Home'],
     agent: 'agent1',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/property-6.pdf'
   }
 ];
 
@@ -127,13 +133,24 @@ export const agents = [
   {
     id: 'agent1',
     name: 'Rohan Darji',
-    title: 'Founder',
+    title: 'Founder & CEO',
     image: './images/RohanDarji.jpg',
     email: 'rohanrealtor20@gmail.com',
     phone: '+91 9712345802',
     bio: 'Rohan Darji is the visionary founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
     specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
     listings: 57
+  },
+  {
+    id: 'agent2',
+    name: 'Amit Desai',
+    title: 'Co-Founder',
+    image: './images/AmitDesai.jpg',
+    email: 'rohanrealtor20@gmail.com',
+    phone: '+91 6353458552',
+    bio: 'Amit Desai is the visionary co-founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
+    specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
+    listings: 45
   }
 ];
 
@@ -169,4 +186,15 @@ export const stats = [
   { label: 'Happy Clients', value: '20+' },
   { label: 'Years Experience', value: '2+' },
   { label: 'Market Coverage', value: '2 Cities' }
+];
+
+export const trustedPartners = [
+  { name: 'Dev Group', logo: './images/partners_svg/dev.svg' },
+  { name: 'Omkar Group', logo: './images/partners/Omkar.svg' },
+  { name: 'Pramukh Group', logo: './images/partners/pramukh.svg' },
+  { name: 'Psy Pramukh Group', logo: './images/partners/psypramukh.svg' },
+  { name: 'Shikshapatri Group', logo: './images/partners/Shikshapatri.svg' },
+  { name: 'Swagat Group', logo: './images/partners/Swagat.svg' },
+  { name: 'Vinayak Group', logo: './images/partners/vinayak.svg' },
+  { name: 'Saral Group', logo: './images/partners/saral.svg' }
 ];

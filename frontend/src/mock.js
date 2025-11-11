@@ -217,5 +217,11 @@ export const trustedPartners = [
   { name: 'Shikshapatri Group', logo: './images/partners_svg/Shikshapatri.png' },
   { name: 'Swagat Group', logo: './images/partners_svg/Swagat.png' },
   { name: 'Vinayak Group', logo: './images/partners_svg/vinayak.png' },
-  { name: 'Saral Group', logo: './images/partners_svg/saral.png' }
+  { name: 'Saral Group', logo: './images/partners_svg/saral.png' },
+  { name: 'Atishay Shivalay Group', logo: './images/partners_svg/atishay_shivalay.png' },
+  { name: 'Revanta Group', logo: './images/partners_svg/revanta.png' },
+  { name: 'Bakeri Group', logo: './images/partners_svg/bakeri.png' },
+  { name: 'Brij Group', logo: './images/partners_svg/brij.png' },
+  { name: 'Samved Group', logo: './images/partners_svg/samved.png' },
+  { name: 'Swaminarayan Group', logo: './images/partners_svg/swaminarayan.png' }
 ];

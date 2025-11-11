@@ -91,7 +91,7 @@ const Contact = () => {
                   <Input
                     type="tel"
                     name="phone"
-                    placeholder="+1 (555) 123-4567"
+                    placeholder="+91 555-123-4567"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     required
@@ -192,13 +192,27 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Map Placeholder */}
-              <div className="rounded-lg overflow-hidden shadow-lg h-64">
-                <img
-                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&q=80"
-                  alt="Office Location"
-                  className="w-full h-full object-cover"
-                />
+              {/* Google Maps */}
+              <div className="rounded-lg overflow-hidden shadow-lg h-96 relative group">
+                <iframe
+                  src="https://maps.google.com/maps?q=Pramukh+Arcade,+Kudasan,+Gandhinagar,+Gujarat+382421&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Silfira Realtors Office Location - Pramukh Arcade"
+                ></iframe>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Pramukh+Arcade+Kudasan+Gandhinagar+Gujarat+382421"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 right-4 bg-gold-600 hover:bg-gold-700 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 text-sm font-medium transition-all opacity-0 group-hover:opacity-100"
+                >
+                  <MapPin className="w-4 h-4" />
+                  View on Google Maps
+                </a>
               </div>
             </div>
           </div>

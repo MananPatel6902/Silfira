@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
-import { Search, Home as HomeIcon, TrendingUp, Award, ArrowRight } from 'lucide-react';
-import { properties, stats, testimonials } from '../mock';
+import { Search, Home as HomeIcon, TrendingUp, Award, ExternalLink } from 'lucide-react';
+import { properties, stats, testimonials, trustedPartners } from '../mock';
+import '../styles/animations.css';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -61,6 +62,46 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Trusted By Section */}
+      <section className="py-16 bg-cream-50 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-serif text-navy-900 mb-2">Trusted By Leading Property Groups</h2>
+            <p className="text-gray-600">We collaborate with the most prestigious real estate developers</p>
+          </div>
+
+          {/* Logo Slider */}
+          <div className="relative">
+            <div className="flex overflow-hidden">
+              <div className="flex animate-scroll">
+                {[...trustedPartners, ...trustedPartners].map((partner, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 mx-8 flex items-center justify-center"
+                    style={{ width: '180px', height: '100px' }}
+                  >
+                    <img
+                      src={partner.logo}
+                      alt={partner.name}
+                      className="max-w-full max-h-full object-contain opacity-100 hover:opacity-200 transition-opacity duration-300  hover:grayscale"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div
+                      className="hidden items-center justify-center w-full h-full bg-gray-100 rounded-lg"
+                    >
+                      <span className="text-gray-600 font-medium text-sm px-4 text-center">{partner.name}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Properties */}
       <section className="py-20 bg-cream-50">
         <div className="max-w-7xl mx-auto px-4">
@@ -72,8 +113,7 @@ const Home = () => {
             {featuredProperties.map((property) => (
               <div
                 key={property.id}
-                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all cursor-pointer group"
-                onClick={() => navigate(`/property/${property.id}`)}
+                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all group"
               >
                 <div className="relative h-64 overflow-hidden">
                   <img
@@ -90,15 +130,41 @@ const Home = () => {
                   <p className="text-gray-600 text-sm mb-4">{property.location}</p>
                   <div className="flex justify-between items-center mb-4">
                     <div className="text-sm text-gray-600">
-                      {property.bedrooms} bed • {property.bathrooms} bath • {property.area.toLocaleString()} sqft
+                      {property.bedroomsMin && property.bedroomsMax ? (
+                        <>{property.bedroomsMin}-{property.bedroomsMax} BHK</>
+                      ) : (
+                        <>{property.bedrooms} BHK</>
+                      )} • {property.bathrooms} bath • {property.areaMin && property.areaMax ? (
+                        <>{property.areaMin.toLocaleString()}-{property.areaMax.toLocaleString()} sqft</>
+                      ) : (
+                        <>{property.area.toLocaleString()} sqft</>
+                      )}
                     </div>
+                  </div>
+                  <div className="mb-4">
+                    <a
+                      href={property.brochureUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-medium transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      View Brochure
+                    </a>
                   </div>
                   <div className="flex justify-between items-center">
                     <div className="text-2xl font-serif text-navy-900">
-                      ${property.price.toLocaleString()}
+                      {property.priceMin && property.priceMax ? (
+                        <>
+                          ₹{property.priceMin.toLocaleString('en-IN')} - ₹{property.priceMax.toLocaleString('en-IN')}
+                        </>
+                      ) : (
+                        <>
+                          ₹{property.price.toLocaleString('en-IN')}
+                        </>
+                      )}
                       {property.status === 'for-rent' && <span className="text-base">/mo</span>}
                     </div>
-                    <ArrowRight className="w-5 h-5 text-gold-600 group-hover:translate-x-2 transition-transform" />
                   </div>
                 </div>
               </div>

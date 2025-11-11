@@ -3,121 +3,148 @@
 export const properties = [
   {
     id: '1',
-    title: 'Elegant Waterfront Villa',
-    type: 'villa',
+    title: 'Only ONE',
+    type: 'Apartment',
     status: 'for-sale',
-    price: 2850000,
-    location: 'Miami Beach, FL',
-    bedrooms: 5,
-    bathrooms: 4,
-    area: 4200,
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
+    priceMax: 9180000,
+    price: 9180000, // Used for filtering
+    location: 'Palm Road, Sargasan, Gandhinagar',
+    bedrooms: 3, // Single bedroom type
+    bathrooms: 3,
+    area: 2295,
+    image: './images/property_images/1.png',
     images: [
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80'
+      ''
     ],
     description: 'Stunning waterfront villa with panoramic ocean views, private dock, and resort-style amenities.',
     features: ['Ocean View', 'Private Dock', 'Pool', 'Smart Home', 'Wine Cellar'],
     agent: 'agent1',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/ON1 (3BHK).pdf'
   },
   {
     id: '2',
-    title: 'Modern Downtown Penthouse',
-    type: 'penthouse',
+    title: 'Atmos By Solaire',
+    type: 'Apartments',
     status: 'for-sale',
-    price: 1950000,
-    location: 'Manhattan, NY',
-    bedrooms: 3,
-    bathrooms: 3,
-    area: 2800,
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
+    priceMin: 11040000,
+    priceMax: 14160000,
+    price: 14080000, // Used for filtering
+    location: 'Sargasan, Gandhinagar',
+    bedroomsMin: 3, // Bedroom range: 3-4 BHK
+    bedroomsMax: 4,
+    bedrooms: 3, // Used for filtering
+    bathrooms: 4,
+    areaMin: 2484,
+    areaMax: 3186,
+    area: 2484, // Used for filtering
+    image: './images/property_images/2.png',
     images: [
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-      'https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80'
+      ''
     ],
     description: 'Luxurious penthouse in the heart of Manhattan with floor-to-ceiling windows and city skyline views.',
     features: ['City Views', 'Concierge', 'Gym', 'Rooftop Terrace', 'Parking'],
     agent: 'agent2',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/AS (3,4BHK SARGASAN).pdf'
   },
   {
     id: '3',
-    title: 'Classic European Estate',
-    type: 'estate',
+    title: 'Dev Auram',
+    type: 'Apartment',
     status: 'for-sale',
-    price: 4500000,
-    location: 'Beverly Hills, CA',
-    bedrooms: 7,
-    bathrooms: 6,
-    area: 8500,
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80'
-    ],
+    priceMin: 7030000,
+    priceMax: 7178000,
+    price : 7030000, // Used for filtering
+    location: 'Palm Road, Sargasan, Gandhinagar',
+    bedroomsMin: 2,
+    bedroomsMax : 3,
+    bathrooms: 3,
+    areaMin: 1710,
+    areaMax: 2259,
+    image: './images/property_images/3.png',
+    images: ['./images/property_images/3.png'],
     description: 'Magnificent European-style estate with manicured gardens, tennis court, and guest house.',
     features: ['Tennis Court', 'Guest House', 'Library', 'Home Theater', 'Security System'],
     agent: 'agent1',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/property-3.pdf'
   },
   {
     id: '4',
-    title: 'Contemporary Urban Loft',
-    type: 'loft',
-    status: 'for-rent',
-    price: 6500,
-    location: 'Brooklyn, NY',
-    bedrooms: 2,
-    bathrooms: 2,
-    area: 1800,
-    image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80',
+    title: 'Samved Opera Symphony and Melody',
+    type: 'Apartment',
+    status: 'for-sale',
+    priceMin: 6290000,
+    priceMax: 9805000,
+    price: 6290000, // Used for filtering
+    location: 'Sargasan, Gandhinagar',
+    bedroomsMin: 2,
+    bedroomsMax: 3,
+    bedrooms: 2, // Used for filtering
+    bathrooms: 3,
+    areaMin: 1530,
+    areaMax: 2385,
+    area: 1530, // Used for filtering
+    image: './images/property_images/4.png',
     images: [
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80'
+      ''
     ],
     description: 'Stunning industrial loft with exposed brick, high ceilings, and modern finishes.',
     features: ['Exposed Brick', 'High Ceilings', 'Hardwood Floors', 'Pet Friendly'],
     agent: 'agent3',
-    featured: false
+    featured: false,
+    brochureUrl: '/brochures/SOS (SARGASAN).pdf'
   },
   {
     id: '5',
-    title: 'Lakeside Family Home',
-    type: 'house',
+    title: 'Vinayak Saral Courtyard',
+    type: 'Apartment',
     status: 'for-sale',
-    price: 875000,
-    location: 'Lake Tahoe, CA',
-    bedrooms: 4,
+    priceMin: 8550000,
+    priceMax: 12600000,
+    price: 8550000, // Used for filtering
+    location: 'PDEU, Gandhinagar',
+    bedroomsMin: 2,
+    bedroomsMax: 3,
+    bedrooms: 2, // Used for filtering
     bathrooms: 3,
-    area: 3200,
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
+    areaMin: 1710,
+    areaMax: 2520,
+    image: './images/property_images/5.png',
     images: [
-      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80'
+      ''
     ],
     description: 'Charming family home with private beach access and mountain views.',
     features: ['Lake Access', 'Mountain Views', 'Fireplace', 'Deck', 'Garage'],
     agent: 'agent2',
-    featured: false
+    featured: false,
+    brochureUrl: '/brochures/VC (PDPU ROAD).pdf'
   },
   {
     id: '6',
-    title: 'Luxury Golf Course Villa',
-    type: 'villa',
+    title: 'Reventa Fortune 2',
+    type: 'Apartment',
     status: 'for-sale',
-    price: 3200000,
-    location: 'Scottsdale, AZ',
-    bedrooms: 6,
-    bathrooms: 5,
-    area: 5800,
-    image: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+    priceMin: 6290000,
+    priceMax: 7992000,
+    price: 6290000, // Used for filtering
+    location: 'Raysan, Gandhinagar',
+    bedroomsMin: 2,
+    bedroomsMax: 3,
+    bedrooms: 2, // Used for filtering
+    bathrooms: 3,
+    areaMin: 1530,
+    areaMax: 1944,
+    image: './images/property_images/6.png',
     images: [
-      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80'
+      ''
     ],
     description: 'Exquisite villa overlooking championship golf course with infinity pool and spa.',
     features: ['Golf Course View', 'Infinity Pool', 'Spa', 'Outdoor Kitchen', 'Smart Home'],
     agent: 'agent1',
-    featured: true
+    featured: true,
+    brochureUrl: '/brochures/RF 2 RAYSAN.pdf'
   }
 ];
 
@@ -127,13 +154,24 @@ export const agents = [
   {
     id: 'agent1',
     name: 'Rohan Darji',
-    title: 'Founder',
+    title: 'Founder & CEO',
     image: './images/RohanDarji.jpg',
     email: 'rohanrealtor20@gmail.com',
     phone: '+91 9712345802',
     bio: 'Rohan Darji is the visionary founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
     specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
     listings: 57
+  },
+  {
+    id: 'agent2',
+    name: 'Amit Desai',
+    title: 'Co-Founder',
+    image: './images/AmitDesai.jpg',
+    email: 'rohanrealtor20@gmail.com',
+    phone: '+91 6353458552',
+    bio: 'Amit Desai is the visionary co-founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
+    specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
+    listings: 45
   }
 ];
 
@@ -156,7 +194,7 @@ export const testimonials = [
   },
   {
     id: '3',
-    name: 'Prakash Patel',
+    name: 'RominI w Patel',
     role: 'Business Executive',
     content: 'Exceptional service from start to finish. They sold our property above asking price in record time. Highly recommend!',
     rating: 5,
@@ -169,4 +207,15 @@ export const stats = [
   { label: 'Happy Clients', value: '20+' },
   { label: 'Years Experience', value: '2+' },
   { label: 'Market Coverage', value: '2 Cities' }
+];
+
+export const trustedPartners = [
+  { name: 'Dev Group', logo: './images/partners_svg/dev.png' },
+  { name: 'Omkar Group', logo: './images/partners_svg/Omkar.png' },
+  { name: 'Pramukh Group', logo: './images/partners_svg/pramukh.png' },
+  { name: 'Psy Pramukh Group', logo: './images/partners_svg/psy pramukh.png' },
+  { name: 'Shikshapatri Group', logo: './images/partners_svg/Shikshapatri.png' },
+  { name: 'Swagat Group', logo: './images/partners_svg/Swagat.png' },
+  { name: 'Vinayak Group', logo: './images/partners_svg/vinayak.png' },
+  { name: 'Saral Group', logo: './images/partners_svg/saral.png' }
 ];

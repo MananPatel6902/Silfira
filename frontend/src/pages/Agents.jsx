@@ -10,9 +10,9 @@ const Agents = () => {
       {/* Header */}
       <section className="py-12 bg-cream-50" >
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-serif text-navy-900 mb-4">Meet Your Agent</h1>
+          <h1 className="text-4xl md:text-5xl font-serif text-navy-900 mb-4">Meet Our Founders</h1>
           <p className="text-xl text-gray-600">
-            Expert guidance dedicated to finding your perfect property
+            Expert leadership dedicated to finding your perfect property
           </p>
         </div>
       </section>
@@ -20,7 +20,7 @@ const Agents = () => {
       {/* Agents Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-1 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {agents.map((agent) => (
               <div
                 key={agent.id}
@@ -71,19 +71,6 @@ const Agents = () => {
                       ))}
                     </div>
                   </div>
-
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">
-                      <span className="font-semibold text-navy-900">{agent.listings}</span> Active Listings
-                    </span>
-                    <Button
-                      variant="outline"
-                      className="border-gold-600 text-gold-600 hover:bg-gold-50 text-sm"
-                      onClick={() => window.location.href = `mailto:${agent.email}`}
-                    >
-                      Contact
-                    </Button>
-                  </div>
                 </div>
               </div>
             ))}
@@ -98,7 +85,7 @@ const Agents = () => {
             Ready to Find Your Dream Property?
           </h2>
           <p className="text-cream-100 text-lg mb-8">
-            Let Rohan guide you every step of the way to your perfect property
+            Let our expert team guide you every step of the way to your perfect property
           </p>
           <Button className="bg-gold-600 hover:bg-gold-700 text-white px-8 py-6 text-lg transition-all hover:scale-105">
             Schedule a Consultation

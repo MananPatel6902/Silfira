@@ -131,7 +131,15 @@ const PropertyDetail = () => {
               </div>
 
               <div className="text-4xl font-serif text-navy-900 mb-8">
-                ${property.price.toLocaleString()}
+                {property.priceMin && property.priceMax ? (
+                  <>
+                    ₹{property.priceMin.toLocaleString('en-IN')} - ₹{property.priceMax.toLocaleString('en-IN')}
+                  </>
+                ) : (
+                  <>
+                    ₹{property.price.toLocaleString('en-IN')}
+                  </>
+                )}
                 {property.status === 'for-rent' && <span className="text-xl">/month</span>}
               </div>
 
@@ -141,7 +149,13 @@ const PropertyDetail = () => {
                     <Bed className="w-5 h-5" />
                     <span className="text-sm">Bedrooms</span>
                   </div>
-                  <div className="text-2xl font-serif text-navy-900">{property.bedrooms}</div>
+                  <div className="text-2xl font-serif text-navy-900">
+                    {property.bedroomsMin && property.bedroomsMax ? (
+                      <>{property.bedroomsMin}-{property.bedroomsMax} BHK</>
+                    ) : (
+                      <>{property.bedrooms} BHK</>
+                    )}
+                  </div>
                 </div>
                 <div>
                   <div className="flex items-center gap-2 text-gray-600 mb-2">
@@ -155,7 +169,13 @@ const PropertyDetail = () => {
                     <Square className="w-5 h-5" />
                     <span className="text-sm">Area</span>
                   </div>
-                  <div className="text-2xl font-serif text-navy-900">{property.area.toLocaleString()}</div>
+                  <div className="text-2xl font-serif text-navy-900">
+                    {property.areaMin && property.areaMax ? (
+                      <>{property.areaMin.toLocaleString()}-{property.areaMax.toLocaleString()}</>
+                    ) : (
+                      <>{property.area.toLocaleString()}</>
+                    )}
+                  </div>
                   <div className="text-xs text-gray-500">sqft</div>
                 </div>
                 <div>

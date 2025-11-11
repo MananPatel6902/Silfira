@@ -21,7 +21,7 @@ const Header = () => {
       <div className="bg-navy-900 text-cream-100 py-2 px-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-sm">
           <div className="flex gap-6">
-            <a href="tel:+15551234567" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
+            <a href="+91 9712345802" className="flex items-center gap-2 hover:text-gold-400 transition-colors">
               <Phone className="w-3 h-3" />
               <span>+91 9712345802
               </span>

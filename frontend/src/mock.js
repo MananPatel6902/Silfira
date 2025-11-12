@@ -158,7 +158,7 @@ export const agents = [
     image: './images/RohanDarji.jpg',
     email: 'rohanrealtor20@gmail.com',
     phone: '+91 9712345802',
-    bio: 'Rohan Darji is the visionary founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
+    bio: 'Rohan Darji is the visionary Founder of Silfira Realtors. He established the firm on a foundation of unwavering commitment to excellence and a profound passion for the luxury real estate market. With his extensive expertise, he specializes in curating personalized experiences, ultimately connecting clients with their perfect, dream properties.',
     specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
     listings: 57
   },
@@ -169,7 +169,7 @@ export const agents = [
     image: './images/AmitDesai.jpg',
     email: 'rohanrealtor20@gmail.com',
     phone: '+91 6353458552',
-    bio: 'Amit Desai is the visionary co-founder of Silfira Realtors, bringing expertise and passion to luxury real estate. With a commitment to excellence and personalized service, he specializes in connecting clients with their dream properties.',
+    bio: 'Amit Desai is the dynamic Co-Founder of Silfira Realtors. Bringing significant expertise and drive, he shares the core passion for luxury real estate and a deep dedication to personalized client service. His focus is on delivering exceptional results and successfully matching clients with their ideal, high-end homes.',
     specialties: ['Luxury Properties', 'Residential Sales', 'Investment Consulting', 'Property Valuation'],
     listings: 45
   }

@@ -145,6 +145,31 @@ export const properties = [
     agent: 'agent1',
     featured: true,
     brochureUrl: '/brochures/RF 2 RAYSAN.pdf'
+  },
+  {
+    id: '7',
+    title: 'Pre-Launch by Shlok Group',
+    type: 'Apartment',
+    status: 'for-sale',
+    priceMin: 6992000,
+    priceMax: 11058000,
+    price: 6992000, // Used for filtering
+    location: '45-M Iconic Road, Kudasan',
+    bedroomsMin: 2,
+    bedroomsMax: 3,
+    bedrooms: 2, // Used for filtering
+    bathrooms: 3,
+    areaMin: 1656,
+    areaMax: 2619,
+    image: './images/property_images/7.png',
+    images: [
+      ''
+    ],
+    description: 'Exquisite villa overlooking championship golf course with infinity pool and spa.',
+    features: ['Golf Course View', 'Infinity Pool', 'Spa', 'Outdoor Kitchen', 'Smart Home'],
+    agent: 'agent1',
+    featured: true,
+    brochureUrl: '/brochures/SHLOK Group 2&3 BHK  KUDASAN.pdf'
   }
 ];
 
@@ -223,5 +248,7 @@ export const trustedPartners = [
   { name: 'Bakeri Group', logo: './images/partners_svg/bakeri.png' },
   { name: 'Brij Group', logo: './images/partners_svg/brij.png' },
   { name: 'Samved Group', logo: './images/partners_svg/samved.png' },
-  { name: 'Swaminarayan Group', logo: './images/partners_svg/swaminarayan.png' }
+  { name: 'Swaminarayan Group', logo: './images/partners_svg/swaminarayan.png' },
+  { name: 'Shlok Group', logo: './images/partners_svg/shlok.png' }
+
 ];

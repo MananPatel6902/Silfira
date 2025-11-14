@@ -207,7 +207,7 @@ export const testimonials = [
     role: 'Property Investor',
     content: 'Silfira Realtors made our investment property search seamless. Their market knowledge and professionalism are unmatched.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80'
+    image: './images/Testimonials/basic.png'
   },
   {
     id: '2',
@@ -215,15 +215,15 @@ export const testimonials = [
     role: 'Homeowner',
     content: 'Finding our dream home was effortless with Silfira. The team understood exactly what we needed and delivered beyond expectations.',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80'
+    image: './images/Testimonials/basic.png'
   },
   {
     id: '3',
-    name: 'RominI w Patel',
+    name: 'Romin Patel',
     role: 'Business Executive',
     content: 'Exceptional service from start to finish. They sold our property above asking price in record time. Highly recommend!',
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80'
+    image: './images/Testimonials/basic.png'
   }
 ];
 

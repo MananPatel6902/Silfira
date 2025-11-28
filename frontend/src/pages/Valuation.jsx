@@ -137,8 +137,11 @@ const Valuation = () => {
         <div className="max-w-3xl mx-auto px-4">
           <div className="bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-2xl font-serif text-navy-900 mb-6">Property Details</h2>
-            <form onSubmit={handleSubmit} className="space-y-6" name="valuation" method="POST" data-netlify="true">
+            <form onSubmit={handleSubmit} className="space-y-6" name="valuation" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
               <input type="hidden" name="form-name" value="valuation" />
+              <p className="hidden">
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </p>
               {/* Personal Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>

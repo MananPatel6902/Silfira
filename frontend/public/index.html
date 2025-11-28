@@ -76,6 +76,32 @@
         <noscript>You need to enable JavaScript to run this app.</noscript>
         <div id="root"></div>
 
+        <!-- Hidden Netlify Forms for Detection (DO NOT REMOVE) -->
+        <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="contact" />
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="tel" name="phone" />
+            <input type="text" name="subject" />
+            <textarea name="message"></textarea>
+            <input type="text" name="bot-field" />
+        </form>
+
+        <form name="valuation" netlify netlify-honeypot="bot-field" hidden>
+            <input type="hidden" name="form-name" value="valuation" />
+            <input type="text" name="name" />
+            <input type="email" name="email" />
+            <input type="tel" name="phone" />
+            <input type="text" name="propertyType" />
+            <input type="text" name="address" />
+            <input type="number" name="bedrooms" />
+            <input type="number" name="bathrooms" />
+            <input type="number" name="area" />
+            <input type="number" name="yearBuilt" />
+            <textarea name="additionalInfo"></textarea>
+            <input type="text" name="bot-field" />
+        </form>
+
         <!-- Floating WhatsApp Button -->
         <a href="https://wa.me/919712345802" target="_blank" rel="noopener noreferrer" class="whatsapp-float" title="Chat on WhatsApp">
             <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

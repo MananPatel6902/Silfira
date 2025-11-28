@@ -60,8 +60,11 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-lg p-8">
               <h2 className="text-2xl font-serif text-navy-900 mb-6">Send us a Message</h2>
-              <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true">
+              <form onSubmit={handleSubmit} className="space-y-6" name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
                 <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden">
+                  <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                </p>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                   <Input

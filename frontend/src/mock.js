@@ -249,6 +249,8 @@ export const trustedPartners = [
   { name: 'Brij Group', logo: './images/partners_svg/brij.png' },
   { name: 'Samved Group', logo: './images/partners_svg/samved.png' },
   { name: 'Swaminarayan Group', logo: './images/partners_svg/swaminarayan.png' },
-  { name: 'Shlok Group', logo: './images/partners_svg/shlok.png' }
-
+  { name: 'Shlok Group', logo: './images/partners_svg/shlok.png' },
+  { name: 'Siban Group', logo: './images/partners_svg/shiban.png' },
+  { name: 'Shivalik Group', logo: './images/partners_svg/shivalik.png' },
+  { name: 'Shilp Group', logo: './images/partners_svg/shilp.png' }
 ];

@@ -135,24 +135,48 @@ const About = () => {
       {/* Image Grid */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+            <h2 className="text-3xl md:text-4xl font-serif text-navy-900 text-center">Photo Booth</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-center">Some moments captured with our team.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-4">
             <img
-              src="./images/why1.jpg"
+              src="./images/About/why1.jpg"
               alt="Office 1"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />
             <img
-              src="./images/why2.jpg"
+              src="./images/About/why2.jpg"
               alt="Office 2"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />
             <img
-              src="./images/why3.jpg"
+              src="./images/About/why3.jpg"
               alt="Office 3"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />
             <img
-              src="./images/why4.jpg"
+              src="./images/About/why4.jpg"
+              alt="Office 4"
+              className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+            />
+            <img
+              src="./images/About/why5.jpg"
+              alt="Office 1"
+              className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+            />
+            <img
+              src="./images/About/why6.jpg"
+              alt="Office 2"
+              className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+            />
+            <img
+              src="./images/About/why7.jpg"
+              alt="Office 3"
+              className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+            />
+            <img
+              src="./images/About/why8.jpg"
               alt="Office 4"
               className="w-full h-64 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
             />

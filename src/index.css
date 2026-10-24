@@ -1,0 +1,325 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+@layer base {
+  :root {
+        --background: 0 0% 100%;
+        --foreground: 344 30% 14%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 344 85% 16%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222 47% 11%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215 16% 47%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222 47% 11%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 345 20% 88%;
+        --input: 345 20% 86%;
+        --ring: 344 55% 34%;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+        --radius: 0.125rem;
+
+        /* Custom Colors - Classic Luxury Palette */
+        --navy-900: 344 85% 16%;
+        --navy-800: 344 66% 25%;
+        --navy-700: 344 55% 34%;
+        --gold-600: 345 46% 42%;
+        --gold-500: 345 47% 55%;
+        --gold-400: 345 55% 72%;
+        --gold-700: 345 51% 33%;
+        --cream-50: 30 40% 97%;
+        --cream-100: 30 35% 93%;
+        --cream-200: 30 30% 85%;
+    }
+  .dark {
+        --background: 222 47% 11%;
+        --foreground: 210 40% 98%;
+        --card: 222 47% 11%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 47% 11%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 210 40% 98%;
+        --primary-foreground: 222 47% 11%;
+        --secondary: 217 33% 17%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 33% 17%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 217 33% 17%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217 33% 17%;
+        --input: 217 33% 17%;
+        --ring: 212 72% 59%;
+        --chart-1: 220 70% 50%;
+        --chart-2: 160 60% 45%;
+        --chart-3: 30 80% 55%;
+        --chart-4: 280 65% 60%;
+        --chart-5: 340 75% 55%;
+    }
+}
+
+@layer components {
+  .label {
+    @apply mb-2 block text-[10px] font-bold uppercase tracking-[.12em] text-[#806d72];
+  }
+  .input {
+    @apply w-full rounded-xl border border-[#4b0617]/10 bg-white px-4 py-3 text-sm outline-none focus:border-[#9d3a52];
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+body {
+    @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Gelasio', Georgia, 'Times New Roman', serif;
+  }
+}
+
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+::selection { background: #4b0617; color: #fff; }
+
+.marquee-track { animation: silfira-marquee 48s linear infinite; }
+.marquee-track-reverse { animation: silfira-marquee 48s linear infinite reverse; }
+.marquee-track:hover, .marquee-track-reverse:hover { animation-play-state: paused; }
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+body { background: #fbf7f8; }
+
+/* Film grain for a tactile, printed feel */
+@media (max-width: 767px) { .grain { display: none; } }
+.grain { position: fixed; inset: -50%; z-index: 60; pointer-events: none; background-size: 320px; opacity: .05; mix-blend-mode: multiply; }
+@keyframes grain { 0% { transform: translate(0,0) } 25% { transform: translate(-3%,2%) } 50% { transform: translate(2%,-3%) } 75% { transform: translate(-2%,-1%) } 100% { transform: translate(0,0) } }
+@keyframes silfira-marquee { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@media print {
+  body * { visibility: hidden !important; }
+  .invoice-print, .invoice-print * { visibility: visible !important; }
+  .invoice-print { position: absolute !important; inset: 0 !important; width: 100% !important; border-radius: 0 !important; box-shadow: none !important; }
+  @page { size: A4; margin: 0; }
+}
+
+@layer utilities {
+  .text-navy-900 {
+    color: hsl(var(--navy-900));
+  }
+  .text-navy-800 {
+    color: hsl(var(--navy-800));
+  }
+  .text-navy-700 {
+    color: hsl(var(--navy-700));
+  }
+  .text-gold-600 {
+    color: hsl(var(--gold-600));
+  }
+  .text-gold-500 {
+    color: hsl(var(--gold-500));
+  }
+  .text-gold-400 {
+    color: hsl(var(--gold-400));
+  }
+  .text-gold-700 {
+    color: hsl(var(--gold-700));
+  }
+  .text-cream-50 {
+    color: hsl(var(--cream-50));
+  }
+  .text-cream-100 {
+    color: hsl(var(--cream-100));
+  }
+  .text-cream-200 {
+    color: hsl(var(--cream-200));
+  }
+  
+  .bg-navy-900 {
+    background-color: hsl(var(--navy-900));
+  }
+  .bg-navy-800 {
+    background-color: hsl(var(--navy-800));
+  }
+  .bg-navy-700 {
+    background-color: hsl(var(--navy-700));
+  }
+  .bg-gold-600 {
+    background-color: hsl(var(--gold-600));
+  }
+  .bg-gold-500 {
+    background-color: hsl(var(--gold-500));
+  }
+  .bg-gold-400 {
+    background-color: hsl(var(--gold-400));
+  }
+  .bg-gold-700 {
+    background-color: hsl(var(--gold-700));
+  }
+  .bg-gold-50 {
+    background-color: hsl(38 90% 97%);
+  }
+  .bg-gold-100 {
+    background-color: hsl(38 88% 90%);
+  }
+  .bg-cream-50 {
+    background-color: hsl(var(--cream-50));
+  }
+  .bg-cream-100 {
+    background-color: hsl(var(--cream-100));
+  }
+  .bg-cream-200 {
+    background-color: hsl(var(--cream-200));
+  }
+  
+  .border-gold-600 {
+    border-color: hsl(var(--gold-600));
+  }
+  
+  .hover\:bg-navy-800:hover {
+    background-color: hsl(var(--navy-800));
+  }
+  .hover\:bg-gold-700:hover {
+    background-color: hsl(var(--gold-700));
+  }
+  .hover\:bg-gold-50:hover {
+    background-color: hsl(38 90% 97%);
+  }
+  .hover\:text-gold-600:hover {
+    color: hsl(var(--gold-600));
+  }
+  .hover\:text-gold-400:hover {
+    color: hsl(var(--gold-400));
+  }
+  .hover\:bg-cream-100:hover {
+    background-color: hsl(var(--cream-100));
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--cream-50));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold-600));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold-700));
+}
+
+/* Gentler grade for generated imagery until the realistic re-shoots arrive */
+.img-soft { filter: saturate(.82) contrast(.97); }
+.img-soft-green { filter: saturate(.72) hue-rotate(-6deg) brightness(.92) contrast(.95); }
+
+.foliage-soft { filter: saturate(.92) contrast(.98); }
+/* Garden cluster: fade the outer ends so it reads as one composed planting under the towers */
+.hero-garden img { -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, #000 12%, #000 88%, transparent 100%); }
+
+
+/* Footer prism-glass wordmark */
+.glass-prism { background-image: linear-gradient(110deg, rgba(255,255,255,.05) 0%, rgba(230,207,159,.42) 18%, rgba(246,220,225,.14) 30%, rgba(255,255,255,.55) 38%, rgba(170,190,235,.3) 46%, rgba(230,207,159,.18) 58%, rgba(255,255,255,.06) 72%, rgba(246,220,225,.24) 86%, rgba(255,255,255,.05) 100%); background-size: 260% 100%; }
+
+/* Fallbacks for browsers without svh units (older iOS Safari) */
+@supports not (height: 100svh) {
+  .h-\[100svh\] { height: 100vh; }
+  .sm\:h-\[100svh\] { height: 100vh; }
+  .md\:h-\[100svh\] { height: 100vh; }
+  .lg\:h-\[100svh\] { height: 100vh; }
+  .h-\[108svh\] { height: 108vh; }
+  .sm\:h-\[108svh\] { height: 108vh; }
+  .md\:h-\[108svh\] { height: 108vh; }
+  .lg\:h-\[108svh\] { height: 108vh; }
+  .h-\[58svh\] { height: 58vh; }
+  .sm\:h-\[58svh\] { height: 58vh; }
+  .md\:h-\[58svh\] { height: 58vh; }
+  .lg\:h-\[58svh\] { height: 58vh; }
+  .h-\[60svh\] { height: 60vh; }
+  .sm\:h-\[60svh\] { height: 60vh; }
+  .md\:h-\[60svh\] { height: 60vh; }
+  .lg\:h-\[60svh\] { height: 60vh; }
+  .h-\[64svh\] { height: 64vh; }
+  .sm\:h-\[64svh\] { height: 64vh; }
+  .md\:h-\[64svh\] { height: 64vh; }
+  .lg\:h-\[64svh\] { height: 64vh; }
+  .h-\[92svh\] { height: 92vh; }
+  .sm\:h-\[92svh\] { height: 92vh; }
+  .md\:h-\[92svh\] { height: 92vh; }
+  .lg\:h-\[92svh\] { height: 92vh; }
+  .h-\[94svh\] { height: 94vh; }
+  .sm\:h-\[94svh\] { height: 94vh; }
+  .md\:h-\[94svh\] { height: 94vh; }
+  .lg\:h-\[94svh\] { height: 94vh; }
+  .min-h-\[100svh\] { min-height: 100vh; }
+  .sm\:min-h-\[100svh\] { min-height: 100vh; }
+  .md\:min-h-\[100svh\] { min-height: 100vh; }
+  .lg\:min-h-\[100svh\] { min-height: 100vh; }
+  .min-h-\[78svh\] { min-height: 78vh; }
+  .sm\:min-h-\[78svh\] { min-height: 78vh; }
+  .md\:min-h-\[78svh\] { min-height: 78vh; }
+  .lg\:min-h-\[78svh\] { min-height: 78vh; }
+  .min-h-\[86svh\] { min-height: 86vh; }
+  .sm\:min-h-\[86svh\] { min-height: 86vh; }
+  .md\:min-h-\[86svh\] { min-height: 86vh; }
+  .lg\:min-h-\[86svh\] { min-height: 86vh; }
+  .min-h-\[88svh\] { min-height: 88vh; }
+  .sm\:min-h-\[88svh\] { min-height: 88vh; }
+  .md\:min-h-\[88svh\] { min-height: 88vh; }
+  .lg\:min-h-\[88svh\] { min-height: 88vh; }
+  .min-h-\[92svh\] { min-height: 92vh; }
+  .sm\:min-h-\[92svh\] { min-height: 92vh; }
+  .md\:min-h-\[92svh\] { min-height: 92vh; }
+  .lg\:min-h-\[92svh\] { min-height: 92vh; }
+}
+
+/* Safari: clip transformed children to rounded/clipped parents */
+.safari-clip { -webkit-mask-image: -webkit-radial-gradient(white, black); isolation: isolate; }
+
+.foliage-front { filter: saturate(.82) brightness(.9) contrast(.98); }
+
+/* Hero canopy: fade each branch out toward its lower tip so no layer ends abruptly */
+.leaf-fade { -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 100%); mask-image: linear-gradient(180deg, #000 72%, transparent 100%); -webkit-tap-highlight-color: transparent; }
+.foliage-back { filter: saturate(.78) brightness(.72) contrast(.96); }

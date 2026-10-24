@@ -1,8 +1,8 @@
 [build]
-  base = "frontend"
   command = "npm run build"
   publish = "build"
 
+# Single-page app: send every route to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"

@@ -1,184 +1,92 @@
 # Silfira Realtors
 
-A modern, luxury real estate website showcasing premium properties. Built with React and deployed on Netlify.
+Marketing website for **Silfira Realtors**, a real estate advisory in Gandhinagar, Gujarat. It presents curated residential projects (Sargasan, Kudasan, Raysan, PDEU · Palm Road) with a scroll-driven, layered visual experience and enquiry forms.
 
-![Silfira Realtors](https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80)
+Built with React 18 (Create React App + CRACO), Tailwind CSS, Framer Motion and Lenis smooth scrolling. Forms are handled by Netlify Forms.
 
-## Features
+## Prerequisites
 
-- **Property Listings**: Browse luxury properties with detailed information, images, and filtering
-- **Agent Profiles**: Meet our expert real estate agents
-- **Property Valuation**: Request free property valuations
-- **Contact Forms**: Easy inquiry and contact forms powered by Netlify Forms
-- **Responsive Design**: Optimized for all devices
-- **Modern UI**: Built with shadcn/ui components and Tailwind CSS
+- **Node.js 18 or newer** (20 LTS recommended)
+- **npm 9+** (bundled with Node)
 
-## Tech Stack
+## Quickest way to run
 
-- **Frontend Framework**: React 18
-- **Routing**: React Router
-- **UI Components**: shadcn/ui
-- **Styling**: Tailwind CSS
-- **Form Handling**: Netlify Forms
-- **Deployment**: Netlify
-- **Icons**: Lucide React
+- **macOS:** double-click `start.command` (or run `./start.sh`)
+- **Windows:** double-click `start.bat`
+- **Linux:** run `./start.sh`
 
-## Getting Started
+It installs dependencies on first run, then starts the site at http://localhost:3000. Or do it manually:
 
-### Prerequisites
-
-- Node.js 16+ and npm
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <your-repo-url>
-   cd silfira-realtors
-   ```
-
-2. Install dependencies:
-   ```bash
-   cd frontend
-   npm install
-   ```
-
-3. Run the development server:
-   ```bash
-   npm start
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-### Building for Production
+## Getting started
 
 ```bash
-cd frontend
-npm run build
+npm install      # install dependencies
+npm start        # dev server at http://localhost:3000
 ```
 
-The build folder will contain the production-ready static files.
+## Production build
 
-## Deployment
-
-This project is configured for **Netlify** deployment. See [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md) for detailed deployment instructions.
-
-### Quick Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start)
-
-## Managing Content
-
-### Updating Properties
-
-To add, edit, or remove property listings, edit `frontend/src/mock.js`:
-
-```javascript
-export const properties = [
-  {
-    id: '1',
-    title: 'Your Property Title',
-    type: 'villa', // villa, penthouse, house, apartment, estate, loft
-    status: 'for-sale', // for-sale, for-rent
-    price: 2850000,
-    location: 'City, State',
-    bedrooms: 5,
-    bathrooms: 4,
-    area: 4200,
-    // ... more fields
-  }
-];
+```bash
+npm run build    # outputs static files to ./build
 ```
 
-### Managing Agents
+To preview the production build locally:
 
-Edit the `agents` array in `frontend/src/mock.js`:
-
-```javascript
-export const agents = [
-  {
-    id: 'agent1',
-    name: 'Agent Name',
-    title: 'Agent Title',
-    email: 'agent@email.com',
-    // ... more fields
-  }
-];
+```bash
+npx serve -s build
 ```
 
-### Form Submissions
+## Environment variables
 
-All form submissions are captured in your Netlify dashboard:
-1. Log in to Netlify
-2. Select your site
-3. Go to Forms tab
-4. View and export submissions
+None are required. `.env.example` lists the only optional setting (`PORT`).
 
-## Project Structure
+## Project structure
 
 ```
 silfira-realtors/
-├── frontend/
-│   ├── public/
-│   │   ├── data.json          # Alternative JSON data format
-│   │   └── index.html
-│   ├── src/
-│   │   ├── components/
-│   │   │   └── ui/           # shadcn/ui components
-│   │   ├── hooks/            # Custom React hooks
-│   │   ├── lib/              # Utilities
-│   │   ├── pages/            # Page components
-│   │   │   ├── Home.jsx
-│   │   │   ├── Properties.jsx
-│   │   │   ├── PropertyDetail.jsx
-│   │   │   ├── Agents.jsx
-│   │   │   ├── Contact.jsx
-│   │   │   ├── Valuation.jsx
-│   │   │   └── About.jsx
-│   │   ├── mock.js           # Static data (EDIT THIS)
-│   │   ├── App.js
-│   │   └── index.js
-│   └── package.json
-├── netlify.toml              # Netlify configuration
-├── DEPLOYMENT_GUIDE.md       # Deployment instructions
-├── CLAUDE.md                 # Developer documentation
-├── .gitignore                # Git ignore rules
-└── README.md                 # This file
+├── public/
+│   ├── index.html          # HTML shell, fonts, Netlify form definitions, WhatsApp button
+│   ├── images/
+│   │   ├── v2/, v3/        # optimised WebP artwork (hero layers, properties, lifestyle, brand)
+│   │   └── partners_svg/   # developer partner logos
+│   └── brochures/          # property brochure PDFs
+├── src/
+│   ├── pages/              # Home, Properties, PropertyDetail, About, Agents, Contact, Valuation, AdminDashboard
+│   ├── components/         # Hero, StreetToSky, Collection, Lifestyle, Neighbourhoods, ClosingScene, Footer, ...
+│   │   ├── motion.jsx      # shared motion primitives (Reveal, MaskLines, ParallaxImage, ArchReveal, ...)
+│   │   └── ui/             # small shadcn/ui primitives (button, input, textarea, toast)
+│   ├── hooks/, lib/        # toast hook, formatting helpers, class utilities
+│   ├── mock.js             # property, team, testimonial and partner data
+│   └── index.css           # Tailwind layers, design tokens, global effects
+├── docs/                   # design plan and image-generation prompt packs
+├── start.command / start.sh / start.bat   # one-click launchers
+├── craco.config.js         # "@/..." import alias
+├── tailwind.config.js
+└── netlify.toml            # build + SPA redirect for Netlify
 ```
 
-## Available Forms
+## Editing content
 
-Three contact forms are integrated with Netlify Forms:
+- **Properties, team, testimonials, partners:** `src/mock.js`
+- **Images:** `public/images/` (referenced by absolute paths such as `/images/v3/hero-towers.webp`)
+- **Brand colours and global styles:** `tailwind.config.js` and `src/index.css`
 
-1. **Contact Form** (`/contact`) - General inquiries
-2. **Valuation Form** (`/valuation`) - Property valuation requests
-3. **Property Inquiry** (`/properties/:id`) - Property-specific inquiries
+## Deployment (Netlify)
 
-## Customization
+The repository root is the site root. Netlify reads `netlify.toml`:
 
-### Colors
+- Build command: `npm run build`
+- Publish directory: `build`
+- All routes rewrite to `index.html` (client-side routing)
 
-The site uses a custom color scheme defined in Tailwind CSS. Main colors:
-- **Navy**: Primary brand color
-- **Gold**: Accent color
-- **Cream**: Background highlights
+## External services
 
-To customize, edit `frontend/src/index.css` and `frontend/tailwind.config.js`.
+- **Netlify Forms:** the contact, valuation, property-enquiry and newsletter forms post to Netlify. They only work when deployed on Netlify; locally they appear to succeed but nothing is stored. The hidden `<form>` blocks in `public/index.html` must stay so Netlify can detect the forms. Submissions appear under *Site → Forms* in the Netlify dashboard.
+- **Google Fonts:** Gelasio and Inter are loaded from fonts.googleapis.com.
+- **WhatsApp:** the floating button links to `wa.me/919712345802`.
 
-### Fonts
+## Notes
 
-The site uses:
-- **Playfair Display** (serif) - For headings
-- **Inter** (sans-serif) - For body text
-
-## License
-
-This project is private and proprietary.
-
-## Support
-
-For issues or questions, please contact [rohan@silfirarealtors.com](mailto:rohan@silfirarealtors.com).
-
----
-
-**Silfira Realtors** - A modern, frontend-only static site deployed on Netlify.
+- `/admin` is a front-end demo dashboard that works on mock data. It has no authentication, so do not put real data behind it as is.
+- Property imagery is AI-generated and labelled "Representative image" on the site. The two "photo booth" images and the advisor portraits are real photographs.
+- Respects `prefers-reduced-motion`: smooth scrolling, the intro screen and decorative animations are reduced.

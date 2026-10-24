@@ -47,13 +47,13 @@ code {
         --radius: 0.5rem;
 
         /* Custom Colors - Classic Luxury Palette */
-        --navy-900: 222 47% 11%;
-        --navy-800: 222 45% 18%;
-        --navy-700: 222 42% 28%;
-        --gold-600: 38 92% 50%;
-        --gold-500: 38 90% 55%;
-        --gold-400: 38 88% 60%;
-        --gold-700: 38 94% 45%;
+        --navy-900: 344 85% 16%;
+        --navy-800: 344 66% 25%;
+        --navy-700: 344 55% 34%;
+        --gold-600: 345 46% 42%;
+        --gold-500: 345 47% 55%;
+        --gold-400: 345 55% 72%;
+        --gold-700: 345 51% 33%;
         --cream-50: 30 40% 97%;
         --cream-100: 30 35% 93%;
         --cream-200: 30 30% 85%;
@@ -90,12 +90,30 @@ code {
   * {
     @apply border-border;
   }
-  body {
+body {
     @apply bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
   }
+}
+
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+::selection { background: #4b0617; color: #fff; }
+
+.marquee-track { animation: silfira-marquee 36s linear infinite; }
+.marquee-track:hover { animation-play-state: paused; }
+@keyframes silfira-marquee { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@media print {
+  body * { visibility: hidden !important; }
+  .invoice-print, .invoice-print * { visibility: visible !important; }
+  .invoice-print { position: absolute !important; inset: 0 !important; width: 100% !important; border-radius: 0 !important; box-shadow: none !important; }
+  @page { size: A4; margin: 0; }
 }
 
 @layer utilities {
@@ -194,6 +212,15 @@ code {
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+/* Public contact shortcuts should never cover admin controls or form fields. */
+body:has(.admin-dashboard) .whatsapp-float {
+  display: none !important;
+}
+
+body:has(.photobooth-lightbox) .whatsapp-float {
+  display: none !important;
 }
 
 /* Custom scrollbar */

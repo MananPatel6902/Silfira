@@ -1,262 +1,55 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '../components/ui/button';
-import { Search, Home as HomeIcon, TrendingUp, Award, ExternalLink } from 'lucide-react';
-import { properties, stats, testimonials, trustedPartners } from '../mock';
-import '../styles/animations.css';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Instagram, Mail, Phone, Quote, Star } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Hero from '../components/Hero';
+import PropertiesGrid from '../components/PropertiesGrid';
+import PhotoBooth from '../components/PhotoBooth';
+import { agents, stats, testimonials, trustedPartners } from '../mock';
 
-const Home = () => {
-  const navigate = useNavigate();
-  const featuredProperties = properties.filter(p => p.featured).slice(0, 3);
+const Reveal = ({ children, className = '' }) => <motion.div initial={{ opacity: 0, y: 36 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: .75, ease: [.2,.65,.3,1] }} className={className}>{children}</motion.div>;
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[90vh] flex items-center justify-center">
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-900/95 to-navy-800/90 z-10"></div>
-        <div className="absolute inset-0">
-          <img
-            src="./images/home.jpg" // change this
-            alt="Luxury Property"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="relative z-20 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight">
-            Discover Your
-            <span className="block text-gold-400">Dream Space</span>
-          </h1>
-          <p className="text-xl text-cream-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Experience unparalleled luxury and sophistication in every property we represent
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              onClick={() => navigate('/properties')}
-              className="bg-gold-600 hover:bg-gold-700 text-white px-8 py-6 text-lg transition-all hover:scale-105"
-            >
-              <Search className="w-5 h-5 mr-2" />
-              Browse Properties
-            </Button>
-            <Button
-              onClick={() => navigate('/valuation')}
-              variant="outline"
-              className="border-2 border-white text-white hover:bg-white hover:text-navy-900 px-8 py-6 text-lg transition-all hover:scale-105"
-            >
-              Get Free Valuation
-            </Button>
-          </div>
-        </div>
-      </section>
+export default function Home() {
+  const [filters, setFilters] = useState({ location: 'All locations', bhk: 'Any BHK', budget: 'Any budget' });
+  return <main className="overflow-hidden bg-[#fbf7f8]">
+    <Hero filters={filters} setFilters={setFilters} />
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-serif text-navy-900 mb-2">{stat.value}</div>
-                <div className="text-sm text-gray-600 uppercase tracking-wider">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="bg-[#f5f1ea] px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
+      <div className="mx-auto grid max-w-[1440px] gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:gap-20">
+        <Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.28em] text-[#9d3a52]">An invitation to live well</p><h2 className="font-serif text-5xl leading-[.98] tracking-[-.04em] text-[#34131b] sm:text-7xl">Real people.<br />Real homes.<br /><span className="italic text-[#9d3a52]">Real value.</span></h2><p className="mt-8 max-w-lg text-base leading-8 text-[#71666a]">Finding a home is personal. We pair honest advice and deep local knowledge with a carefully curated portfolio—so every move feels confident, transparent and entirely yours.</p><Link to="/about" className="mt-8 inline-flex items-center gap-3 border-b border-[#4b0617] pb-2 text-[10px] font-bold uppercase tracking-[.18em] text-[#4b0617]">Our story <ArrowRight size={15} /></Link></Reveal>
+        <Reveal className="relative"><div className="absolute -left-5 -top-5 h-28 w-28 border-l border-t border-[#9d3a52]/35"/><div className="aspect-[16/11] overflow-hidden"><img src="/images/editorial/gandhinagar-residence-interior.png" alt="A considered residence in Gandhinagar" loading="lazy" className="h-full w-full object-cover transition duration-1000 hover:scale-[1.025]"/></div><p className="mt-4 text-[9px] uppercase tracking-[.18em] text-[#8c7b7f]">Contemporary living · Gandhinagar</p></Reveal>
+      </div>
+      <div className="mx-auto mt-20 grid max-w-[1440px] grid-cols-2 border-l border-[#4b0617]/15 md:grid-cols-4">{stats.map((s) => <Reveal key={s.label} className="border-r border-t border-[#4b0617]/15 px-5 py-8 sm:px-8"><strong className="block font-serif text-4xl font-normal text-[#4b0617] sm:text-5xl">{s.value}</strong><span className="mt-2 block text-[9px] uppercase tracking-[.18em] text-[#8c7b7f]">{s.label}</span></Reveal>)}</div>
+    </section>
 
-      {/* Trusted By Section */}
-      <section className="py-16 bg-cream-50 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-serif text-navy-900 mb-2">Trusted By Leading Property Groups</h2>
-            <p className="text-gray-600">We collaborate with the most prestigious real estate developers</p>
-          </div>
+    <PropertiesGrid limit={6} />
 
-          {/* Logo Slider */}
-          <div className="relative">
-            <div className="flex overflow-hidden">
-              <div className="flex animate-scroll">
-                {[...trustedPartners, ...trustedPartners].map((partner, index) => (
-                  <div
-                    key={index}
-                    className="flex-shrink-0 mx-8 flex items-center justify-center"
-                    style={{ width: '180px', height: '100px' }}
-                  >
-                    <img
-                      src={partner.logo}
-                      alt={partner.name}
-                      className="max-w-full max-h-full object-contain opacity-100 hover:opacity-200 transition-opacity duration-300  hover:grayscale"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                        e.target.nextSibling.style.display = 'flex';
-                      }}
-                    />
-                    <div
-                      className="hidden items-center justify-center w-full h-full bg-gray-100 rounded-lg"
-                    >
-                      <span className="text-gray-600 font-medium text-sm px-4 text-center">{partner.name}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="relative min-h-[76vh] overflow-hidden text-white">
+      <motion.img initial={{ scale: 1.06 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ duration: 1.4 }} src="/images/editorial/gift-city-riverfront.png" alt="GIFT City and Gandhinagar at dusk" loading="lazy" className="absolute inset-0 h-full w-full object-cover"/>
+      <div className="absolute inset-0 bg-gradient-to-r from-[#25030c]/80 via-[#25030c]/20 to-transparent"/>
+      <div className="relative mx-auto flex min-h-[76vh] max-w-[1440px] items-end px-5 py-16 sm:px-8 lg:px-14 lg:py-24"><Reveal><p className="mb-5 text-[10px] font-bold uppercase tracking-[.28em] text-[#f0c5ce]">At the centre of what is next</p><h2 className="max-w-3xl font-serif text-5xl leading-[.96] tracking-[-.04em] sm:text-7xl">Gandhinagar calm.<br/><span className="italic text-[#f0c5ce]">GIFT City momentum.</span></h2><p className="mt-7 max-w-md text-sm leading-7 text-white/70">Well-connected neighbourhoods, thoughtful infrastructure and enduring potential—all within one of Gujarat's most exciting growth corridors.</p><Link to="/properties" className="mt-8 inline-flex items-center gap-3 border-b border-white/60 pb-2 text-[10px] font-bold uppercase tracking-[.18em]">Explore the collection <ArrowRight size={15}/></Link></Reveal></div>
+    </section>
 
-      {/* Featured Properties */}
-      <section className="py-20 bg-cream-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16"> 
-            <h2 className="text-4xl md:text-5xl font-serif text-navy-900 mb-4">Featured Properties</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Explore our handpicked selection of exceptional properties</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredProperties.map((property) => (
-              <div
-                key={property.id}
-                className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all group"
-              >
-                <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={property.image}
-                    alt={property.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 right-4 bg-gold-600 text-white px-3 py-1 rounded text-sm font-medium">
-                    {property.status === 'for-sale' ? 'For Sale' : 'For Rent'}
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-serif text-navy-900 mb-2">{property.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{property.location}</p>
-                  <div className="flex justify-between items-center mb-4">
-                    <div className="text-sm text-gray-600">
-                      {property.bedroomsMin && property.bedroomsMax ? (
-                        <>{property.bedroomsMin}-{property.bedroomsMax} BHK</>
-                      ) : (
-                        <>{property.bedrooms} BHK</>
-                      )} • {property.bathrooms} bath • {property.areaMin && property.areaMax ? (
-                        <>{property.areaMin.toLocaleString()}-{property.areaMax.toLocaleString()} sqft</>
-                      ) : (
-                        <>{property.area.toLocaleString()} sqft</>
-                      )}
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <a
-                      href={property.brochureUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-medium transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      View Brochure
-                    </a>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-2xl font-serif text-navy-900">
-                      {property.priceMin && property.priceMax ? (
-                        <>
-                          ₹{property.priceMin.toLocaleString('en-IN')} - ₹{property.priceMax.toLocaleString('en-IN')}
-                        </>
-                      ) : (
-                        <>
-                          ₹{property.price.toLocaleString('en-IN')}
-                        </>
-                      )}
-                      {property.status === 'for-rent' && <span className="text-base">/mo</span>}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button
-              onClick={() => navigate('/properties')}
-              className="bg-navy-900 hover:bg-navy-800 text-white px-8 py-6 transition-colors"
-            >
-              View All Properties
-            </Button>
-          </div>
-        </div>
-      </section>
+    <PhotoBooth />
 
-      {/* Why Choose Us */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-navy-900 mb-4">Why Choose Silfira</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Excellence in every aspect of luxury real estate</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <HomeIcon className="w-8 h-8 text-gold-600" />
-              </div>
-              <h3 className="text-xl font-serif text-navy-900 mb-3">Premium Properties</h3>
-              <p className="text-gray-600">Exclusive access to the finest luxury properties in prime locations worldwide</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Award className="w-8 h-8 text-gold-600" />
-              </div>
-              <h3 className="text-xl font-serif text-navy-900 mb-3">Expert Guidance</h3>
-              <p className="text-gray-600">Professional agents with decades of combined experience in luxury real estate</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <TrendingUp className="w-8 h-8 text-gold-600" />
-              </div>
-              <h3 className="text-xl font-serif text-navy-900 mb-3">Market Insights</h3>
-              <p className="text-gray-600">In-depth market analysis and investment strategies for maximum returns</p>
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="overflow-hidden border-y border-black/10 bg-[#f5e9ec] py-10">
+      <p className="mb-8 text-center text-[10px] font-bold uppercase tracking-[.28em] text-[#7b7469]">Trusted by leading developers</p>
+      <div className="marquee-track flex w-max items-center">{[...trustedPartners, ...trustedPartners].map((p, i) => <div key={`${p.name}-${i}`} className="mx-8 flex h-20 w-40 items-center justify-center sm:mx-12"><img src={p.logo} alt={p.name} loading="lazy" className="max-h-16 max-w-[140px] object-contain grayscale transition duration-300 hover:grayscale-0" /></div>)}</div>
+    </section>
 
-      {/* Testimonials */}
-      <section className="py-20 bg-navy-900">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-white mb-4">Client Testimonials</h2>
-            <p className="text-cream-200 max-w-2xl mx-auto">Hear what our satisfied clients have to say</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="bg-white/5 backdrop-blur-sm p-8 rounded-lg">
-                <div className="flex items-center mb-6">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                    <p className="text-cream-200 text-sm">{testimonial.role}</p>
-                  </div>
-                </div>
-                <p className="text-cream-100 leading-relaxed italic">"{testimonial.content}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="bg-[#fbf7f8] px-5 py-24 sm:px-8 lg:px-14 lg:py-32">
+      <div className="mx-auto max-w-[1440px]">
+        <Reveal className="mb-14 flex flex-col justify-between gap-6 lg:flex-row lg:items-end"><div><p className="mb-4 text-[11px] font-bold uppercase tracking-[.28em] text-[#9d3a52]">The people behind Silfira</p><h2 className="font-serif text-5xl tracking-[-.04em] text-[#4b0617] sm:text-7xl">Meet your <span className="italic text-[#9d3a52]">advisors.</span></h2></div><p className="max-w-sm text-sm leading-7 text-[#68706c]">Local expertise with one simple promise: your priorities always come first.</p></Reveal>
+        <div className="grid gap-6 md:grid-cols-2">{agents.map((agent, i) => <motion.article key={agent.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * .12 }} className="group relative min-h-[560px] overflow-hidden bg-[#5b1021]"><img src={agent.image} alt={agent.name} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-top transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#31010d] via-transparent to-transparent" /><div className="absolute inset-x-0 bottom-0 p-7 text-white sm:p-10"><p className="mb-2 text-[10px] font-bold uppercase tracking-[.22em] text-[#f6dce1]">{agent.title}</p><h3 className="font-serif text-4xl">{agent.name}</h3><div className="mt-0 max-h-0 overflow-hidden opacity-0 transition-all duration-500 group-hover:mt-6 group-hover:max-h-28 group-hover:opacity-100"><div className="flex flex-wrap gap-3"><a href={`tel:${agent.phone}`} className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs hover:bg-white hover:text-[#4b0617]"><Phone size={13}/>Call</a><a href={`mailto:${agent.email}`} className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs hover:bg-white hover:text-[#4b0617]"><Mail size={13}/>Email</a><a href="https://instagram.com/silfira_realtors" className="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 hover:bg-white hover:text-[#4b0617]" aria-label="Instagram"><Instagram size={14}/></a></div></div></div></motion.article>)}</div>
+      </div>
+    </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gold-600">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-serif text-white mb-6">Ready to Find Your Dream Property?</h2>
-          <p className="text-white/90 text-lg mb-8">Let our experts guide you to the perfect property</p>
-          <Button
-            onClick={() => navigate('/contact')}
-            className="bg-white text-navy-900 hover:bg-cream-100 px-8 py-6 text-lg transition-all hover:scale-105"
-          >
-            Contact Us Today
-          </Button>
-        </div>
-      </section>
-    </div>
-  );
-};
+    <section className="bg-[#4b0617] px-5 py-24 text-white sm:px-8 lg:px-14 lg:py-32">
+      <div className="mx-auto max-w-[1440px]"><Reveal><p className="mb-4 text-[11px] font-bold uppercase tracking-[.28em] text-[#f0c5ce]">Client stories</p><h2 className="mb-14 max-w-3xl font-serif text-5xl leading-none tracking-[-.04em] sm:text-7xl">Words from people who <span className="italic text-[#f0c5ce]">found home.</span></h2></Reveal>
+        <motion.div drag="x" dragConstraints={{ left: -400, right: 0 }} className="flex cursor-grab gap-5 active:cursor-grabbing">{testimonials.map(t => <article key={t.id} className="w-[82vw] max-w-[480px] shrink-0 border border-white/15 bg-white/[.035] p-7 sm:p-10"><Quote className="mb-10 text-[#f0c5ce]" size={34}/><p className="min-h-[140px] font-serif text-2xl leading-9 text-white/90">“{t.content}”</p><div className="mt-9 flex items-end justify-between border-t border-white/15 pt-6"><div><strong className="block text-sm">{t.name}</strong><span className="text-xs text-white/45">{t.role}</span></div><div className="flex text-[#f0c5ce]">{Array.from({length:t.rating}).map((_,i)=><Star key={i} size={13} fill="currentColor"/>)}</div></div></article>)}</motion.div>
+      </div>
+    </section>
 
-export default Home;
+    <section className="relative overflow-hidden bg-[#8d2942] px-5 py-24 text-white sm:px-8 lg:px-14 lg:py-28"><div className="absolute -right-24 -top-56 font-serif text-[34rem] leading-none text-white/[.06]">S</div><Reveal className="relative mx-auto max-w-[1100px] text-center"><p className="mb-5 text-[11px] font-bold uppercase tracking-[.28em]">Begin your search</p><h2 className="font-serif text-5xl leading-none tracking-[-.04em] sm:text-7xl">The right space changes <span className="italic">everything.</span></h2><Link to="/contact" className="mt-10 inline-flex items-center gap-3 bg-[#4b0617] px-8 py-5 text-xs font-bold uppercase tracking-[.18em] transition hover:-translate-y-1">Talk to an advisor <ArrowRight size={15}/></Link></Reveal></section>
+  </main>;
+}

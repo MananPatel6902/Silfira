@@ -28,7 +28,7 @@ export default function Header() {
   useEffect(() => setOpen(false), [pathname]);
 
   return <motion.header animate={{ y: hidden && !open ? '-100%' : '0%' }} transition={{ duration: 0.6, ease: EASE }}
-    className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${scrolled || open ? 'border-b border-white/10 bg-[#2a020b]/80 backdrop-blur-xl' : 'bg-gradient-to-b from-black/40 to-transparent'}`}>
+    className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${scrolled || open || pathname !== '/' ? 'border-b border-white/10 bg-[#2a020b]/80 backdrop-blur-xl' : 'bg-gradient-to-b from-black/40 to-transparent'}`}>
     <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-5 sm:px-8 lg:h-24 lg:px-14">
       <Link to="/" className="flex items-center gap-3.5" aria-label="Silfira Realtors home"><img src="/images/v2/brand/silfira-monogram-ivory.png" alt="" className="h-10 w-auto lg:h-11" /><span className="h-8 w-px bg-white/25" /><img src="/images/v2/brand/silfira-wordmark-ivory.png" alt="Silfira Realtors" className="h-7 w-auto lg:h-8" /></Link>
       <nav className="hidden items-center gap-9 lg:flex">

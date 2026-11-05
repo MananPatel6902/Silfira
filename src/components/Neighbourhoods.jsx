@@ -10,7 +10,7 @@ const areas = [
   { key: 'Sargasan', x: 20, y: 28, img: 'locality-sargasan', note: 'Wide boulevards, schools and the city’s most sought-after new launches.' },
   { key: 'Kudasan', x: 31, y: 47, img: 'locality-kudasan', note: 'Cafés, retail and the 45-M Iconic Road, minutes from GIFT City.' },
   { key: 'Raysan', x: 58, y: 58, img: 'locality-raysan', note: 'Calm, green and close to the Sabarmati riverfront.' },
-  { key: 'GIFT City', x: 84, y: 68, img: 'locality-pdeu-palm-road', note: 'India’s landmark business district, with premium homes and modern infrastructure close by.' },
+  { key: 'Palm Road', label: 'PDEU · Palm Road', x: 68, y: 64, img: 'locality-pdeu-palm-road', note: 'Homes around PDEU and Palm Road, within reach of GIFT City.' },
 ];
 export default function Neighbourhoods() {
   const { properties } = useSiteData();
@@ -31,9 +31,9 @@ export default function Neighbourhoods() {
           <h2 className="font-serif text-5xl leading-[.95] tracking-[-.04em] sm:text-7xl"><MaskLines lines={['Know the city', <span className="italic text-[#f6dce1]">before you move.</span>]} /></h2>
           <div className="mt-10 border-t border-white/15">
             {areas.map(a => <button key={a.key} onMouseEnter={() => setActive(a)} onFocus={() => setActive(a)} onClick={() => setActive(a)}
-              className={`group flex w-full items-center justify-between border-b border-white/15 py-5 text-left transition ${active.key === a.key ? 'text-white' : 'text-white/45 hover:text-white/80'}`}>
+              className={`group flex w-full items-center justify-between gap-3 border-b border-white/15 py-5 text-left transition ${active.key === a.key ? 'text-white' : 'text-white/45 hover:text-white/80'}`}>
               <span className="flex items-baseline gap-4"><span className={`h-2 w-2 rounded-full transition ${active.key === a.key ? 'bg-[#e6cf9f]' : 'bg-white/20'}`} /><span className="font-serif text-2xl sm:text-3xl">{a.label || a.key}</span></span>
-              <span className="text-[10px] uppercase tracking-[.2em]">{count(a.key) ? `${count(a.key)} ${count(a.key) === 1 ? 'home' : 'homes'}` : 'Explore'}</span>
+              <span className="shrink-0 whitespace-nowrap text-[10px] uppercase tracking-[.2em]">{count(a.key) ? `${count(a.key)} ${count(a.key) === 1 ? 'home' : 'homes'}` : 'Explore'}</span>
             </button>)}
           </div>
           <AnimatePresence mode="wait">

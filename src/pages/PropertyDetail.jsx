@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -40,6 +40,9 @@ const PropertyDetail = () => {
   const property = properties.find(p => p.id === id || propertyPathKey(p) === id);
   const agent = property?.manager || profiles.find(a => a.id === property?.agent);
   
+  const [favorites, setFavorites] = useState(() => { try { const stored = JSON.parse(localStorage.getItem('silfira-favorites') || '[]'); return Array.isArray(stored) ? stored : []; } catch { return []; } });
+  const saved = favorites.includes(id);
+  useEffect(() => { setSelectedImage(0); }, [id]);
   const [selectedImage, setSelectedImage] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
@@ -78,10 +81,13 @@ const PropertyDetail = () => {
   };
 
   const handleSaveFavorite = () => {
-    toast({
-      title: "Saved!",
-      description: "Property added to your favorites."
-    });
+    try {
+      const next = saved ? favorites.filter(key => key !== id) : [...favorites, id];
+      localStorage.setItem('silfira-favorites', JSON.stringify(next));
+      setFavorites(next);
+      toast({ title: saved ? 'Removed from favorites' : 'Property saved', description: 'Your favorites are stored on this device.' });
+    } catch { toast({ title: 'Unable to save', description: 'Please enable browser storage and try again.', variant: 'destructive' }); }
+
   };
 
   return (
@@ -132,7 +138,7 @@ const PropertyDetail = () => {
             <div className="bg-white  border border-[#4b0617]/10 p-8 mb-8">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h1 className="text-3xl md:text-4xl font-serif text-navy-900 mb-2">{property.title}</h1>
+                  <h2 className="text-3xl md:text-4xl font-serif text-navy-900 mb-2">{property.title}</h2>
                   <div className="flex items-center gap-2 text-gray-600">
                     <MapPin className="w-5 h-5" />
                     <span>{property.location}</span>
@@ -140,10 +146,12 @@ const PropertyDetail = () => {
                 </div>
                 <Button
                   onClick={handleSaveFavorite}
+                  aria-label={saved ? "Remove property from favorites" : "Save property to favorites"}
+                  aria-pressed={saved}
                   variant="outline"
                   className="border-gold-600 text-gold-600 hover:bg-gold-50"
                 >
-                  <Heart className="w-5 h-5" />
+                  <Heart className="w-5 h-5" fill={saved ? "currentColor" : "none"} />
                 </Button>
               </div>
 
@@ -260,6 +268,7 @@ const PropertyDetail = () => {
               </div>
             )}
 
+            {property.brochureUrl && <a href={property.brochureUrl} target="_blank" rel="noreferrer" className="mb-6 block border border-[#4b0617]/20 bg-white p-5 text-center font-semibold text-[#4b0617]">Download PDF brochure</a>}
             {/* Inquiry Form */}
             <div className="bg-white  border border-[#4b0617]/10 p-6">
               <h3 className="text-xl font-serif text-navy-900 mb-4">Request Information</h3>
@@ -286,7 +295,7 @@ const PropertyDetail = () => {
                 />
                 <Input
                   aria-label="Phone number"
-                  type="tel"
+                  type="tel" pattern="[6-9][0-9]{9}" maxLength={10} inputMode="numeric" title="Enter a 10-digit Indian mobile number starting with 6, 7, 8 or 9"
                   name="phone"
                   placeholder="Phone Number"
                   value={formData.phone}

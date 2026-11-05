@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { EASE, MaskLines, useIsDesktop } from './motion';
 import FallingLeaves from './FallingLeaves';
 
-const locations = ['All locations', 'Sargasan', 'Kudasan', 'Raysan', 'PDEU'];
+const locations = ['All locations', 'Sargasan', 'Kudasan', 'Raysan', 'PDEU', 'Palm Road', 'GIFT City'];
 const V = '/images/v2/hero/';
 const V3 = '/images/v3/';
 
@@ -64,6 +64,7 @@ export default function Hero({ filters, setFilters }) {
     const q = new URLSearchParams();
     if (filters.location !== 'All locations') q.set('location', filters.location);
     if (filters.bhk !== 'Any BHK') q.set('bhk', filters.bhk.replace(' BHK', ''));
+    if (filters.budget !== 'Any budget') q.set('budget', filters.budget);
     navigate(`/properties?${q.toString()}`);
   };
 

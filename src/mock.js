@@ -230,10 +230,10 @@ export const testimonials = [
 ];
 
 export const stats = [
-  { label: 'Properties Sold', value: '25+' },
-  { label: 'Happy Clients', value: '20+' },
+  { label: 'Local Focus', value: 'Gandhinagar' },
+  { label: 'Service', value: 'Personal' },
   { label: 'Years Experience', value: '2+' },
-  { label: 'Market Coverage', value: '2 Cities' }
+  { label: 'Market Coverage', value: '1 City' }
 ];
 
 export const trustedPartners = [

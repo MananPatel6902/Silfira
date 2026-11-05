@@ -79,7 +79,7 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
                   <Input
                     aria-label="Phone number"
-                    type="tel"
+                    type="tel" pattern="[6-9][0-9]{9}" maxLength={10} inputMode="numeric" title="Enter a 10-digit Indian mobile number starting with 6, 7, 8 or 9"
                     name="phone"
                     placeholder="+91 555-123-4567"
                     value={formData.phone}

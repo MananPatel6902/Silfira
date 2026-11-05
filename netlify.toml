@@ -2,9 +2,8 @@
   base = "."
   command = "npm run build"
   publish = "build"
+# Route and 404 rules are generated in build/_redirects after the build.
 
-# Single-page app: send every route to index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[[edge_functions]]
+  function = "property-page"
+  path = "/properties/*"

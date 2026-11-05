@@ -81,7 +81,7 @@ const Agents = () => {
           <p className="text-cream-100 text-lg mb-8">
             Let our expert team guide you every step of the way to your perfect property
           </p>
-          <Button className="bg-gold-600 hover:bg-gold-700 text-white px-8 py-6 text-lg transition-all hover:scale-105">
+          <Button onClick={() => { window.location.href = "/contact"; }} className="bg-gold-600 hover:bg-gold-700 text-white px-8 py-6 text-lg transition-all hover:scale-105">
             Schedule a Consultation
           </Button>
         </div>

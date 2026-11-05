@@ -1,12 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, MapPin, SlidersHorizontal } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
+import { matchesBudget } from '../lib/propertyFilters';
 import { useSiteData } from '../context/SiteDataContext';
 import { areaLabel, bhkLabel, priceLabel, propertyPathKey } from '../lib/format';
 import { EASE, Eyebrow, MaskLines } from './motion';
 
-const LOCATIONS = ['All', 'Sargasan', 'Kudasan', 'Raysan', 'PDEU'];
+const LOCATIONS = ['All', 'Sargasan', 'Kudasan', 'Raysan', 'PDEU', 'Palm Road', 'GIFT City'];
 const BUDGETS = ['All', 'Under ₹75L', '₹75L to ₹1Cr', 'Above ₹1Cr'];
 
 const Filter = ({ label, value, onChange, options }) => (
@@ -46,18 +47,28 @@ const Card = ({ p, index }) => (
   </motion.article>
 );
 
-export default function PropertiesGrid({ limit, initialFilters }) {
+export default function PropertiesGrid({ limit }) {
   const { properties } = useSiteData();
-  const [location, setLocation] = useState(initialFilters?.location || 'All');
-  const [bhk, setBhk] = useState(initialFilters?.bhk || 'All');
-  const [budget, setBudget] = useState(initialFilters?.budget || 'All');
+  const [params, setParams] = useSearchParams();
+  const location = params.get('location') || 'All';
+  const bhk = params.get('bhk') || 'All';
+  const budget = params.get('budget') || 'All';
+  const update = (key, value) => {
+    const next = new URLSearchParams(params);
+    if (value === 'All') next.delete(key); else next.set(key, value);
+    setVisible(limit || 9);
+    setParams(next, { preventScrollReset: true });
+  };
+  const setLocation = value => update('location', value);
+  const setBhk = value => update('bhk', value);
+  const setBudget = value => update('budget', value);
   const [visible, setVisible] = useState(limit || 9);
 
   const results = useMemo(() => properties.filter(p => {
     const bedrooms = [p.bedrooms, p.bedroomsMin, p.bedroomsMax].filter(Boolean);
     const matchLocation = location === 'All' || p.location.toLowerCase().includes(location.toLowerCase());
-    const matchBhk = bhk === 'All' || bedrooms.includes(Number(bhk));
-    const matchBudget = budget === 'All' || (budget === 'Under ₹75L' ? p.price < 7500000 : budget === '₹75L to ₹1Cr' ? p.price >= 7500000 && p.price <= 10000000 : p.price > 10000000);
+    const matchBhk = bhk === 'All' || (Number(bhk) >= Math.min(...bedrooms) && Number(bhk) <= Math.max(...bedrooms));
+    const matchBudget = matchesBudget(p, budget);
     return matchLocation && matchBhk && matchBudget;
   }), [properties, location, bhk, budget]);
   const filtered = location !== 'All' || bhk !== 'All' || budget !== 'All';
@@ -78,8 +89,8 @@ export default function PropertiesGrid({ limit, initialFilters }) {
             <Filter label="Budget" value={budget} onChange={setBudget} options={BUDGETS.map(b => [b, b === 'All' ? 'Any budget' : b])} />
           </div>
           <div className="flex items-center justify-between gap-6 px-1 lg:min-w-[220px] lg:justify-end">
-            <span className="text-xs text-[#6b6064]"><strong className="font-serif text-2xl font-normal text-[#4b0617]">{results.length}</strong> residences</span>
-            {filtered && <button onClick={() => { setLocation('All'); setBhk('All'); setBudget('All'); }} className="border-b border-[#4b0617]/30 pb-0.5 text-[11px] font-semibold uppercase tracking-[.14em] text-[#4b0617] hover:border-[#4b0617]">Reset</button>}
+            <span className="text-xs text-[#6b6064]"><strong className="font-serif text-2xl font-normal text-[#4b0617]">{results.length}</strong> {results.length === 1 ? 'residence' : 'residences'}</span>
+            {filtered && <button onClick={() => { setParams({}); setVisible(limit || 9); }} className="border-b border-[#4b0617]/30 pb-0.5 text-[11px] font-semibold uppercase tracking-[.14em] text-[#4b0617] hover:border-[#4b0617]">Reset</button>}
           </div>
         </div>
 

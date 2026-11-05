@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { MotionConfig } from 'framer-motion';
+import Seo from './components/Seo';
+import NotFound from './pages/NotFound';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -27,7 +29,7 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <SiteDataProvider>
-            <SmoothScroll />
+            <SmoothScroll /><Seo />
             <Routes>
               <Route path="/admin/login" element={<AdminLogin />} />
               <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
@@ -51,6 +53,7 @@ function PublicRoutes() {
     <Route path="/agents" element={<Agents />} />
     <Route path="/contact" element={<Contact />} />
     <Route path="/valuation" element={<Valuation />} />
+    <Route path="*" element={<NotFound />} />
   </Routes><Footer /></>;
 }
 

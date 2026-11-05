@@ -109,6 +109,7 @@ export const fallbackSiteData = {
 };
 
 export async function submitLead(payload) {
+  if (payload.phone && !/^[6-9][0-9]{9}$/.test(payload.phone.trim())) throw new Error('Enter a valid 10-digit Indian mobile number.');
   if (!supabase) throw new Error('Supabase is not configured');
   const { data, error } = await supabase.from('leads').insert({
     inquiry_type: payload.inquiryType,

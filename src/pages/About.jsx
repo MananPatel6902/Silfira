@@ -63,7 +63,7 @@ export default function About() {
           <Eyebrow>Our story</Eyebrow>
           <h2 className="font-serif text-5xl leading-[.95] tracking-[-.04em] text-[#4b0617] sm:text-6xl"><MaskLines lines={['Not just selling', <span className="italic text-[#9d3a52]">property.</span>]} /></h2>
           <div className="mt-8 space-y-5 text-base leading-8 text-[#5f5458]">
-            <Reveal><p>Founded by Rohan Darji, Silfira Realtors began with a simple vision: to transform the real estate experience. What started as a passionate endeavour has grown into a trusted name in premium property services.</p></Reveal>
+            <Reveal><p>Founded by Rohan Darji with co-founder Amit Desai, Silfira Realtors began with a simple vision: to transform the real estate experience. What started as a passionate endeavour has grown into a trusted name in premium property services.</p></Reveal>
             <Reveal delay={0.1}><p>Rohan’s success stems from an unwavering commitment to his clients’ dreams and an intimate understanding of the market. He doesn’t just sell properties; he curates lifestyles and builds lasting relationships with every client.</p></Reveal>
             <Reveal delay={0.2}><p>Today, Silfira Realtors continues to raise the standard in Gandhinagar real estate, with a portfolio of successful transactions and a reputation built on trust, expertise and dedication.</p></Reveal>
           </div>

@@ -28,7 +28,7 @@ export default function InvoiceViewer({ invoice, onClose }) {
   };
   return <div className="invoice-overlay" role="dialog" aria-modal="true" aria-label={`Invoice ${invoice.invoice_number}`} data-lenis-prevent>
     <div className="invoice-viewer">
-      <div className="invoice-toolbar"><div><h2>{invoice.invoice_number}</h2><p>Print your bill or select “Save as PDF” in the print window.</p></div><div className="invoice-actions"><button type="button" disabled={!ready} onClick={print}><Printer size={16}/>Print</button><button type="button" className="invoice-pdf" disabled={!ready} onClick={print}><FileDown size={16}/>Save as PDF</button><button type="button" aria-label="Close invoice" onClick={onClose} autoFocus><X size={20}/></button></div></div>
+      <div className="invoice-toolbar"><div><h2>{invoice.invoice_number}</h2><p>Print or choose “Save as PDF”. Keep “Headers and footers” off in print settings.</p></div><div className="invoice-actions"><button type="button" disabled={!ready} onClick={print}><Printer size={16}/>Print</button><button type="button" className="invoice-pdf" disabled={!ready} onClick={print}><FileDown size={16}/>Save as PDF</button><button type="button" aria-label="Close invoice" onClick={onClose} autoFocus><X size={20}/></button></div></div>
       {error && <p role="alert" className="invoice-error">{error}</p>}
       <iframe ref={frame} title={`Bill ${invoice.invoice_number}`} srcDoc={document} onLoad={() => setReady(true)} className="invoice-frame"/>
     </div>

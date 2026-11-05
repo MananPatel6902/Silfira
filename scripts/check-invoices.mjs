@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const { invoiceDocument } = await import(`data:text/javascript;base64,${Buffer.from(await fs.readFile('src/lib/invoice.js','utf8')).toString('base64')}`);
+const bill = {invoice_number:'SLF-TEST',billing_name:'<script>alert("x")</script>',billing_address:'Line 1\nLine 2',issue_date:'2026-11-05',status:'partially_paid',invoice_items:[{sort_order:2,particulars:'Second service',details:'<img src=x onerror=alert(1)>',quantity:2,unit_amount:5000},{sort_order:1,particulars:'First service',quantity:1,unit_amount:20000}],payments:[{amount:10000,payment_mode:'upi',paid_at:'2026-11-05T06:00:00Z'}]};
+const html=invoiceDocument(bill,'https://www.silfira.co.in');
+assert.ok(html.includes('₹30,000.00')); assert.ok(html.includes('₹10,000.00')); assert.ok(html.includes('₹20,000.00'));
+assert.ok(html.indexOf('First service') < html.indexOf('Second service'));
+assert.ok(!html.includes('<script>')); assert.ok(!html.includes('<img src=x'));
+assert.ok(html.includes('&lt;script&gt;')); assert.ok(html.includes('05 Nov 2026'));
+assert.ok(html.includes('https://www.silfira.co.in/images/v2/brand/silfira-monogram-maroon.png'));
+assert.ok(html.includes('@page{size:A4')); assert.ok(html.includes('Client signature')); assert.ok(html.includes('Authorized signature'));
+const empty=invoiceDocument({invoice_number:'EMPTY',invoice_items:[],payments:[]},'https://www.silfira.co.in');
+assert.ok(empty.includes('No payment recorded')); assert.ok(empty.includes('No invoice items recorded.')); assert.ok(!empty.includes('NaN'));
+const authoritative=invoiceDocument({...bill,total:40000,balance_due:30000},'https://www.silfira.co.in');
+assert.ok(authoritative.includes('₹40,000.00'));
+console.log('PASS: item ordering/calculation, partial payments, persisted totals, escaped client input, Indian dates/currency, logo, A4 print styles, and empty invoices.');
